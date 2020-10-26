@@ -5,21 +5,22 @@ title: Using data from the Facebook API in your Messenger bot
 
 This tutorial shows how to create a Django service that fetch data from the Facebook Graph API to be consumed by a Messenger Bot that will help users from Facebook Groups to discover the most relevant content in the group. Demo code can be obtained in GitHub and the sample project can be tested in this chatbot.
 
-# Using data from the Facebook API in your Messenger bot
-
 ## Introduction
 This tutorial shows how to create a Django service that fetch data from the Facebook Graph API to be consumed by a Messenger Bot that will help users from Facebook Groups to discover the most relevant content in the group. Demo code can be obtained in GitHub and the sample project can be tested in this chatbot.
 
 ## Project Description
-```
-Diagram
-```
-In this tutorial we'll focus on the service that the Messenger bot will consume to present info about the group to the user.
+The project that we review in this tutorial is a Messenger bot that helps members of our Developer Circles Facebook group to discover relevant content. We retrieve the data of the Facebook group using the Graph API, analyze it and present it to the users via the bot so they can have easy access to the most relevant content of the group.
+
+![Group API response received in Messenger](https://i.ibb.co/dLDDhmB/Screen-Shot-2020-10-26-at-4-56-22.png)
+
+The following diagram shows a basic view of the components of the project. We'll focus on the right side of the image, in particular in the`Content Parser Service` which is the one that provides the info to the Messenger bot. This service communicate with the server that hosts the bot, it can be the same or a different one, wee see that it retrieves the info from a Facebook Group.
+
+![Bot server diagram](https://i.ibb.co/4PD19DX/Graph-Api-Bot-Diagram.png)
 
 ## Pre-requisites
 * Python and pipenv installed.
 * Familiarity with python requests lib.
-* Know how to create new Django projects and using views, responses and templates.
+* Know how to create new Django projects and familiarity with Django's views, responses and templates.
 * Know how to setup a Messenger bot in any platform that allows consuming an external web service or API. We'll use Chatfuel for the demo on this tutorial.
 
 ## Setting Up a Virtual Environment Using pipenv
@@ -55,9 +56,9 @@ path('group/<int:group_id>/weekly_summary?group_name=<str:group_name>'
   name='group_weekly_summary'),
 ```
 We found the following params defined in our urls:
-* group_id: To know from which group we'll fetch info from.
-* group_name: Used as a label in a HTML view.
-* resp_format: To identify the desired response format.
+* `group_id`: To know from which group we'll fetch info from.
+* `group_name`: Used as a label in a HTML view.
+* `resp_format`: To indicate the desired response format.
 
 And now we include this app file into the `urlpatterns`  list of the main urls file
 ``` python
@@ -87,13 +88,14 @@ Our app's flow starts int the home view
 @login_required(login_url=settings.FB_LOGIN_URL)  
 def home(request):  
 ```
-Given that we added the `login_required` decorator to our view if the user is not logged in it will be send to the Facebook Login using the following URL
+Given that we added the `login_required` decorator to our view if the user is not logged in it will be send to the Facebook Login using a URL that we build like this:
+``` python
+FB_LOGIN_URL = f'https://www.facebook.com/{GRAPH_API_VERSION}/dialog/oauth?{FB_AUTH_PARAMS} \  
+&state={FB_LOGIN_STATE_PARAM}&scope=groups_show_list'
 ```
-http://
-```
-The params of this URL are defined in the aux file `fb_api_requests_urls.py` and inside it the values are imported using the Django settings file and the `env` library so we can keep this information secure, stored only in our server and restricted to public access or from accidentally going public when uploading our code to services like GitHub.
+The params of this URL are defined in the aux file `fb_api_requests_urls.py` and inside it, some private values are imported using the Django settings file and the `env` library so we can keep this information stored only in our server and restricted to public access and avoid accidentally sending to public when uploading our code to services like GitHub.
 
-Then after the user authorizes our app, the callback url that we configured in Facebook and that we setup before in the urls file will be called.
+After the user authorizes our app, the callback url that we configured in Facebook and that we setup before in the urls file will be called.
 ``` python
 def fb_login_redirect(request):  
     """  
@@ -135,10 +137,10 @@ This code is more extensive, but basically it checks the validity of an `auth_to
 
 ## The Facebook Groups API
 After a successful authentication users land in the `home` view that shows the list of the groups that they manage.
-```
-Image of groups list
-```
-This web page is by the home view that we previously listed, the complete code shows that it uses a helper function to get the groups managed to the user and it renders them to the web browser using a template.
+
+![List of FB groups administered by a user](https://i.ibb.co/qjmKHFR/Groups-list-screenshot.png)
+
+This web page is rendered by the home view that we previously listed, the complete code shows that it uses a helper function to get the groups managed to the user and it renders them to the web browser using a template.
 ``` python
 @login_required(login_url=settings.FB_LOGIN_URL)  
 def home(request):  
@@ -148,6 +150,7 @@ def home(request):
     """
     user_managed_groups = get_managed_groups(request)  
     context = {'groups': user_managed_groups}  
+    # TODO Pretty templates
     return render(request, 'fb_data_miner/groups.html', context)
 ```
 This is the code of the `get_managed_groups` helper function
@@ -178,10 +181,10 @@ def get_managed_groups(request):
 The helper function contains a while loop that calls the groups API for fetching all the groups that the users are members, however it will filter only the groups that the users manage, the filter is done using a lambda function that check if the `administrator` field of each group item has the value of `true`. Also note that the while loops ends when the response doesn't contain a field called `next` which happens in the final page of the response as described in the [pagination documentation](https://developers.facebook.com/docs/graph-api/using-graph-api/#paging).
 
 Then when selecting a group, users see a summary of the group and a menu of possible data points to analyze such as members, topics or posts summary.
-```
-Image of groups list
-```
-When selecting the `weekly summary` option, the users get a list of the most popular posts shared during this week, or some other time period, depending of the value of a function param.
+
+![Summary and options for a particular Facebook Group](https://i.ibb.co/564FtsJ/Screen-Shot-2020-10-26-at-9-52-40.png)
+
+When selecting the `Weekly summary` option, the users get a list of the most popular posts shared during this week, or some other time period, depending of the value of a function param.
 ``` python
 @login_required(login_url=settings.FB_LOGIN_URL)  
 def group_weekly_summary(request, group_id, group_name, resp_format='html'):  
@@ -223,20 +226,29 @@ else:
 ```
 
 ## Facebook Messenger Response and Templates
-As we saw in the previous snippet, for building the JSON response that we can use in our Messenger bot, we used some of the message templates that are defined by the API. This templates are defined as a dict almost at the beginning of the file and then are just populated with the data retrieved by the querys made to the Graph API.
+As we saw in the previous snippet, for building the JSON response for our Messenger bot, we used some of the message templates that are defined by the Messenger API. This templates are defined as a dict almost at the beginning of the file and then are just populated with the data retrieved by the querys made to the Graph API.
 
 ![Messenger template response shown in browser](https://i.ibb.co/d4q3Z6B/Screen-Shot-2020-10-26-at-5-02-41.png)
 
 ## Consuming our service from a Messenger Bot
-Finally we are ready to hook our service that fetches info from the Facebook Graph API with our Messenger bot, to do this we'll make use of the Messaging APIs, also some platforms that help us to create bots  provide more simple ways to connect our bots, we'll use Chatfuel in this tutorial to illustrate this.
+Finally we are ready to hook our service that fetches info from the Facebook Graph API with our Messenger bot, this process make use of the Messaging APIs, it can be implemented at any point you receive a message and some platforms that help us to create bots provide very simple ways to connect our bots, we'll use Chatfuel in this tutorial to illustrate this.
 
-![Group API response received in Messenger](https://i.ibb.co/dLDDhmB/Screen-Shot-2020-10-26-at-4-56-22.png)
+First, inside a Chatfuel flow we connect a message element with a new action element that we can create by dragging from the connection point of the message to an empty space in the flow view, as shown in the following picture.
 
-## Conclusion
-The Facebook Graph API can be used to retrieve important social information for users, as we showed with our example with our groups, however consuming data from the backend has lost some support as shown by the limited options for auth process in backend. Fortunately this is boilerplate code that can be easily reused in different projects. Some more can be re-used as the Graph API follows a similar structure for every endpoint and as we show features like lambdas and filters will be commonly used when processing data from this or many other APIs.
+![Connecting a message response with a Bot Action in Chatfuel](https://i.ibb.co/cwFWryZ/Screen-Shot-2020-10-26-at-9-58-34.png)
+
+A new action item will be create, we click on the `+Add action` button that shows and we select JSON Request in the menu that appears
+
+![Configuring JSON Request action in Chatfuel](https://i.ibb.co/T1jVKDg/Screen-Shot-2020-10-26-at-10-00-27.png)
+
+And when selecting that option a section for configuring our JSON Request will appear, in this view we select a request type of GET and we use our url from the last step, making sure of specifying the `format` param as `json`
+
+![enter image description here](https://i.ibb.co/HzrF9m9/Screen-Shot-2020-10-26-at-10-02-32.png)
+
+And that will be all, with that you can start sending messages to your bot that will trigger a process for fetching and processing data from the Facebook Graph API. Hope you find it useful!
 
 ## References
-Facebook Graph API
-Facebook Messenger API
-Django documentation
-Chatfuel 
+[Facebook Graph API](https://developers.facebook.com/docs/graph-api/)
+[Facebook Messenger API](https://developers.facebook.com/docs/messenger-platform/)
+[Django documentation](https://docs.djangoproject.com/en/3.1/)
+[Chatfuel Docs](http://docs.chatfuel.com/en/)
