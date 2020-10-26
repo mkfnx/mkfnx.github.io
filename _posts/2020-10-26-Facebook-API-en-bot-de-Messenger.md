@@ -1,70 +1,72 @@
 ---
 layout: post
-title: Using data from the Facebook API in your Messenger bot
+title: Usando datos del API de Facebook en tu bot de Messenger
 ---
 
-This tutorial shows how to create a Django service that fetch data from the Facebook Graph API to be consumed by a Messenger Bot.
-Demo code can be obtained in GitHub and the sample project can be tested in this bot.
+Este tutorial muestra como crear un servicio de Django que obtenga información de el Graph API de Facebook para que sea consumida por un bot de Messenger.
+El código de demo está disponible en GitHub y el proyecto de muestra se puede probar en este bot.
 
-## Project Description
-The project that we review in this tutorial is a Messenger bot that helps members of our Developer Circles Facebook group to discover relevant content. We retrieve the data of the Facebook group using the Graph API, analyze it and present it to the users via the bot so they can have easy access to the most relevant content of the group.
+## Descriptción del Proyecto
+El proyecto que mostramos en este tutorial es un bot de Messenger que ayuda a los miembros de nuestro grupo de Facebook de Developer Circles a descubrir el contenido más relevante del grupo. Este proyecto obtiene información del grupo de Facebook usando el Graph API, posteriormente analiza la información y finalmente la expone a través de una respuesta JSON para que pueda mostrarse en un bot de Messenger.
 
 ![Group API response received in Messenger](https://i.ibb.co/dLDDhmB/Screen-Shot-2020-10-26-at-4-56-22.png)
 
-The following diagram shows a basic view of the components of the project. We'll focus on the right side of the image, in particular in the`Content Parser Service` which is the one that provides the info to the Messenger bot. This service communicate with the server that hosts the bot, it can be the same or a different one, wee see that it retrieves the info from a Facebook Group.
+El siguiente diagrama muestra una vista básica de los componentes del proyecto. Nos enfocaremos en el ladod erecho de la imagen. En particular en el `Content Parser Service` el cual es el encargado de obtener y procesar la información del API y de entregarla en formato JSON. Este servicio puede estar hosteado en el mismo servidor que el bot o en uno diferente, lo cual facilita su integración. 
 
 ![Bot server diagram](https://i.ibb.co/4PD19DX/Graph-Api-Bot-Diagram.png)
 
-## Pre-requisites
-* Python and pipenv installed.
-* Familiarity with python requests lib.
-* Know how to create new Django projects and familiarity with Django's views, responses and templates.
-* Know how to setup a Messenger bot in any platform that allows consuming an external web service or API. We'll use Chatfuel for the demo on this tutorial.
+## Pre-requisitos
+* Python y pipenv instalados.
+* Familiaridad con la biblioteca requests de Python.
+* Saber como crear proyectos de Django y familiaridad con conceptos de Django como views, responses y templates.
+* Saber como configurar un bot de Messenger en cualquier platforma que permita consumir un servicio web o API. En este tutorial usaremos Chatfuel.
 
-## Setting Up a Virtual Environment Using pipenv
-First, we create a new folder for our project and move into it
+## Configurando el ambiente virtual usando pipenv
+Primero, creamos una nueva carpeta para nuestro proyecto y nos movemos dentro de él
 ``` bash
 mkdir fb_groups_api_for_messenger && cd fb_groups_api_for_messenger
 ```
-Next we'll use pipenv for installing Django
+Después usamos pipenv para instalar Django
 ``` bash
 pipenv install django
 ```
-And now we activate our virtual environment with:
+Luego activamos nuestro ambiente virtual
 ``` bash
 pipenv shell
 ```
-Now we create a new Django project
+Ahora creamos nuestro proyecto de Django
 ``` bash
 django-admin startproject fb_groups_api_for_messenger
 ```
-And finally we create and app inside our project
+Y finalmente creamos una app para nuestro proyecto
 ``` bash
 python manage.py startapp fb_group_data
 ```
 
-## Setting Up the Django Project
-Now that we have our Django project we'll add a few urls, one needed for completing the Facebook authentication process and the others for building a flow for fetching the group's info. This urls need to be added to the `fb_group_data` urls file.
-``` python
-path('fb_login_redirect', views.fb_login_redirect, name='fb_login_redirect'),  
-path('', views.home, name='home'),  
-path('group/<int:group_id>', views.group, name='group'),  
-path('group/<int:group_id>/weekly_summary?group_name=<str:group_name>'  
- '&format=<str:resp_format>', views.group_weekly_summary,  
-  name='group_weekly_summary'),
-```
-We found the following params defined in our urls:
-* `group_id`: To know from which group we'll fetch info from.
-* `group_name`: Used as a label in a HTML view.
-* `resp_format`: To indicate the desired response format.
-
-And now we include this app file into the `urlpatterns`  list of the main urls file
+## Configurando el proyecto de Django
+Con nuestro proyecto Django ya configurado agregaremos algunas urls, una es para completar el proceso de autenticación de Facebook y las otras son para que el usuario seleccione el grupo y la información que desea obtener. 
+Estas urls se agregan al archivo de urls de la app `fb_group_data`.
 ``` python
 urlpatterns = [  
+    path('fb_login_redirect', views.fb_login_redirect, name='fb_login_redirect'),  
+    path('', views.home, name='home'),  
+    path('group/<int:group_id>', views.group, name='group'),  
+    path('group/<int:group_id>/weekly_summary?group_name=<str:group_name>'  
+     '&format=<str:resp_format>', views.group_weekly_summary,  
+      name='group_weekly_summary'),
+```
+En nuestras urls usamos estos parámetros:
+* `group_id`: Para saber de que grupo obtendremos info.
+* `group_name`: Se usa como etiqueta en una vista HTML.
+* `resp_format`: Para indicar el formato de respuesta deseado, html o json.
+
+Y ahora incluimos estas urls en el archivo de urls del proyecto
+``` python
+urlpatterns = [
     path('', include('fb_group_data.urls', namespace='fb')),
 ```
 
-Now we add the corresponding views for this urls, we'll describe the views in detail in the following sections.
+Luego agregamos las views correspondientes a estas urls, en las siguientes secciones describiremos a detalle como funcinoan estas views.
 ``` python
 def fb_login_redirect(request):
 
@@ -78,13 +80,13 @@ def group(request, group_id):
 def group_weekly_summary(request, group_id, group_name, resp_format='html'):
 ```
 
-Also, don't forget to run the Django migrations so you can runt and test the project
+No olvides ejecutar las migraciones de Django para que puedas ejecutar y probar el proyecto.
 ```
 python manage.py migrate
 ```
 
-### Settings and .env
-The values referenced from `settings` are defined in the Django settings file and some of them are imported using the `dotenv` library, so we can keep this information stored only in our server and restricted to public access and avoid accidentally sending to public when uploading our code to services like GitHub.
+### Settings y .env
+Los valores a los que se hace referencia con el prefijo `settings` están definidos en el archivo de settings de Django y algunos de ellos se importan usando la biblioteca `dotenv`, de esta forma podemos mantener estaá información segura en nuestro servidor y evitar exponerla cuando enviemos nuestro código a servidores públicos como GitHub.
 ``` python
 import os
 from pathlib import Path
@@ -116,10 +118,11 @@ FB_APP_ACCESS_TOKEN_URL = f'{GRAPH_API_BASE_URL}/{GRAPH_API_ACCESS_TOKEN_PATH}?c
 ```
 
 
-## Facebook Manual Login Flow
-The main usage of the Facebook API now occurs in client platforms such as the web browser and mobile apps, that's why the documentation now shows little info for server platforms and if we are interested on this we are practically left with the options of building a manual login flow, so we'll do that.
+## Proceso Manual de Login en Facebook
+Actualmente el uso principal del API de Facebook sucede en plataformas cliente como el navegador web o aplicaciones móviles
+por ello la documentación contiene poco contenido sobre plataformas de servidor así que practicamente solo nos queda la opción de realizar manualmente el inicio de sesión, así que eso es lo que haremos.
 
-Our app's flow starts int the home view
+El flujo de inicio de sesión comienza en nuestra vista home
 ``` python
 @login_required(login_url=settings.FB_LOGIN_URL)  
 def home(request):  
