@@ -1,0 +1,186 @@
+I"�Z<p>En esta primera fase de nuestro proyecto de calculadora de pesas de gimnasio programaremos un algoritmo en JavaScript que resuelva un caso básico de este problema. Recordemos que este proyecto puede servir como guía para proyectos de la certificación frontend de freeCodeCamp. Y que este post es parte de una serie para crear un proyecto completo y que puedes ver completa en <a href="https://mkfnx.github.io/fCC-Barbell//">https://mkfnx.github.io/fCC-Barbell//</a></p>
+
+<p>Puedes ver la solución de este problema en este CodePen: <a href="https://codepen.io/mkfnx/pen/OJVgbMv/">https://codepen.io/mkfnx/pen/OJVgbMv/</a></p>
+
+<h1 id="descripción-del-problema">Descripción Del Problema</h1>
+<p>Crea una función <code class="highlighter-rouge">getPlatesForWeight(weight)</code> la cual recibe el parámetro <code class="highlighter-rouge">weight</code> el cual es un número que indica el peso en libras que deseamos para nuestra barra olímpica. Este peso debe ser mayor de 45 lbs y debe ser un múltiplo de 5, ya que solo se pueden lograr estos pesos con los discos estándar, los cuales son de 2.5, 5, 10, 25, 35 y 45 lbs.</p>
+
+<p>La función mencionada debe devolver un <code class="highlighter-rouge">Object</code> (o <code class="highlighter-rouge">Map</code>) cuyas llaves serán los pesos de los discos estándar y cuyos valores serán la cantidad de discos de cada peso que se deben cargar en cada lado de la barra, ya que el peso debe estar balanceado. Y otro punto a tomar en cuenta es que la barra pesa por si misma 45 lbs.</p>
+
+<p>Algo importante dado los puntos anteriores es que el peso que de verdad debemos calcular será el peso original indicado en la función, menos las 45 lbs de la barra y esto dividio entre 2, ya que debemos balancear el peso en cada lado de la barra. Podemos resumir eso en esta fórmula:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Peso a calcular = (Peso Original - 45) / 2
+</code></pre></div></div>
+
+<p>Un ejemplo para tener esto un poco más claro: Al llamar a nuestra función de esta forma <code class="highlighter-rouge">getPlatesForWeight(200)</code>, para calcular la cantidad de discos necesarios para tener una barra de 200 lbs, la función debe devolver el siguiente map:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="mi">10</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="mf">2.5</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="mi">25</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="mi">35</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="mi">45</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="mi">5</span><span class="p">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Lo cual corresponde a una barra cargada de la siguiente manera</p>
+
+<h2><img src="/images/barbell-calculator-example-just-lift-app.png" alt="Ejemplo de resultado de proyecto" /></h2>
+<p>(Captura de pantalla de la <a href="(https://play.google.com/store/apps/details?id=feliform.justlift)">app Just Lift</a>, creada por Feliform)</p>
+
+<p>Aquí vemos que la suma del peso para lograr una carga de 200 lbs queda de la siguiente forma:</p>
+
+<ul>
+  <li>Peso lado izquierdo: 77.5 (1 disco de 45 + 1 disco de  25 + 1 disco de  5 + 1 disco de 2.5)</li>
+  <li>Peso lado derecho: 77.5</li>
+  <li>Peso barra: 45</li>
+  <li>Total: 200 (77.5 de lado izquierdo + 77.5 de lado derecho + 45 de baarra)</li>
+</ul>
+
+<h2 id="nota-debemos-usar-menor-cantidad-posible-de-discos">Nota: Debemos usar menor cantidad posible de discos</h2>
+<p>El mismo peso se puede ajustar de diferentes formas con los discos estándar, por ejemplo, 20 lbs pueden ser 2 discos de 10 lbs o 4 discos de 5 lbs y así con muchos otros pesos y discos, sin embargo, debido a que en los gimnasios compartimos el equipo con otras personas no queremos tardar mucho ajustando nuestra barra, así que para calcular este peso trataremos de mover el menor número posible de discos y esto tendrá como consecuencia que deberemos intentar colocar los discos más pesados primero.</p>
+
+<h1 id="entorno-de-desarrollo-y-creación-del-proyecto">Entorno de desarrollo y creación del proyecto</h1>
+<p>Para este ejemplo usaremos <a href="http://codepen.io">CodePen</a>, la cual es una herramienta que nos permite editar y ejecutar nuestro código directamente del navegador. Dado que en esta fase del proyecto aún no mostraremos cosas en la vista principal del navegador, estaremos usando la consola y la instrucción <code class="highlighter-rouge">console.log</code> para mostrar nuestros resultados y hacer nuestras pruebas.</p>
+
+<p>Para crear un proyecto en CodePen visita la dirección <a href="https://codepen.io/pen/">https://codepen.io/pen/</a> ahí verás el entorno de desarrollo de CodePen (para guardar tu proyecto deberás crear una cuenta), nosotros estaremos trabajando en el 3er panel el cual tiene el título de JS. Y para poder ver los resultados de esta fase del proyecto debemos presionar el botón de abajo a la izquierda que dice Console.</p>
+
+<p><img src="/images/code-pen-environment.png" alt="Vista de entorno de CodePen" /></p>
+
+<h1 id="pasos-de-la-solución">Pasos de la Solución</h1>
+
+<p>A continuación vamos a describir los pasos y las secciones de código que permiten solucionar este problema.</p>
+
+<p>Recuerda que en este enlace <a href="https://codepen.io/mkfnx/pen/OJVgbMv/">https://codepen.io/mkfnx/pen/OJVgbMv/</a> puedes en cualquier momento puedes consultar una solución de esta fase del proyecto para obtener más contexto.</p>
+
+<h2 id="configuración-inicial">Configuración inicial</h2>
+<p>Como primer paso, definimos valores constantes que usaremos en el proyecto para obtener un código más limpio, y así poder los llamados <a href="https://es.wikibooks.org/wiki/Refactorizaci%C3%B3n/Reemplazar_n%C3%BAmero_m%C3%A1gico_con_constante_simb%C3%B3lica">“números mágicos”</a>, los cuales se consideran una mala práctica.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">PLATE_2_5</span> <span class="o">=</span> <span class="mf">2.5</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">PLATE_5</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">PLATE_10</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">PLATE_25</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">PLATE_35</span> <span class="o">=</span> <span class="mi">35</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">PLATE_45</span> <span class="o">=</span> <span class="mi">45</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">BARBELL_WEIGHT</span> <span class="o">=</span> <span class="mi">45</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Como podemos ver, las constantes que necesitamos son simplemente los valores de los pesos de nuestros discos y de la barra.</p>
+
+<h3 id="crear-nuestra-función-y-verificar-que-se-llama-correctamente-colocandole-un-consolelog-que-muestre-el-peso-que-se-pasa-a-la-función">Crear nuestra función y verificar que se llama correctamente, colocandole un <code class="highlighter-rouge">console.log</code> que muestre el peso que se pasa a la función.</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getNeededPlatesForWeight</span><span class="p">(</span><span class="nx">weight</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">weight is: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">weight</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">getNeededPlatesForWeight</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span> <span class="c1">// Al llamar esta función veremos en la consola un mensaje que muestra el peso con el que la invocamos</span>
+</code></pre></div></div>
+
+<h3 id="inicializar-el-map-de-discos-usar-notación-de-llave-roder-de--los-valores-de-key-de-nuestro-object">Inicializar el Map de discos. Usar notación de llave (roder de [] los valores de key de nuestro Object)</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">neededPlates</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="p">[</span><span class="nx">PLATE_2_5</span><span class="p">]:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="p">[</span><span class="nx">PLATE_5</span><span class="p">]:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="p">[</span><span class="nx">PLATE_10</span><span class="p">]:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="p">[</span><span class="nx">PLATE_25</span><span class="p">]:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="p">[</span><span class="nx">PLATE_35</span><span class="p">]:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="p">[</span><span class="nx">PLATE_45</span><span class="p">]:</span> <span class="mi">0</span>
+  <span class="p">};</span>
+</code></pre></div></div>
+
+<h2 id="validaciones">Validaciones</h2>
+
+<h3 id="verificar-que-el-peso-indicado-es-mayor-que-el-peso-de-la-barra-45-lbs-de-no-ser-así-no-es-necesario-agregar-discos-y-por-lo-tanto-no-tenemos-nada-que-calcular-así-que-devolvemos-el-map-de-discos-necesarios-tal-y-como-lo-inicializamos-con-los-valores-en-0s">Verificar que el peso indicado es mayor que el peso de la barra (45 lbs), de no ser así, no es necesario agregar discos y por lo tanto no tenemos nada que calcular, así que devolvemos el Map de discos necesarios tal y como lo inicializamos con los valores en 0s.</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">weight</span> <span class="o">&lt;=</span> <span class="nx">BARBELL_WEIGHT</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">lifting the empty bar is enough for that weight</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">neededPlates</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="verificar-que-el-peso-restante-ya-contando-el-peso-de-la-barra-sea-un-múltiplo-de-25-es-decir-que-pueda-llegarse-a-ese-peso-usando-los-discos-estándar-de-no-ser-así-devolvemos-el-map-de-discos-necesarios-tal-y-como-lo-inicializamos-con-los-valores-en-0s">Verificar que el peso restante (ya contando el peso de la barra) sea un múltiplo de 2.5, es decir que pueda llegarse a ese peso usando los discos estándar, de no ser así, devolvemos el Map de discos necesarios tal y como lo inicializamos con los valores en 0s.</h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">weightPerSide</span> <span class="o">=</span> <span class="p">(</span><span class="nx">weight</span> <span class="o">-</span> <span class="nx">BARBELL_WEIGHT</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">weightPerSide</span> <span class="o">%</span> <span class="nx">PLATE_2_5</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">The requested weight can</span><span class="se">\'</span><span class="s1">t be exactly loaded with the standard weight plates</span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">neededPlates</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="procedimiento-principal">Procedimiento principal.</h2>
+<p>Agregamos discos, empezando por el de mayor peso, hasta que logremos el peso deseado y finalmente devolvemos el nuestro resultado, un Map con la cantidad de discos correspondiente.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nx">weightPerSide</span> <span class="o">&gt;=</span> <span class="nx">PLATE_2_5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">weightPerSide</span> <span class="o">&gt;=</span> <span class="nx">PLATE_45</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">neededPlates</span><span class="p">[</span><span class="nx">PLATE_45</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">weightPerSide</span> <span class="o">-=</span> <span class="nx">PLATE_45</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">weightPerSide</span> <span class="o">&gt;=</span> <span class="nx">PLATE_35</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">neededPlates</span><span class="p">[</span><span class="nx">PLATE_35</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">weightPerSide</span> <span class="o">-=</span> <span class="nx">PLATE_35</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">weightPerSide</span> <span class="o">&gt;=</span> <span class="nx">PLATE_25</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">neededPlates</span><span class="p">[</span><span class="nx">PLATE_25</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">weightPerSide</span> <span class="o">-=</span> <span class="nx">PLATE_25</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">weightPerSide</span> <span class="o">&gt;=</span> <span class="nx">PLATE_10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">neededPlates</span><span class="p">[</span><span class="nx">PLATE_10</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">weightPerSide</span> <span class="o">-=</span> <span class="nx">PLATE_10</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">weightPerSide</span> <span class="o">&gt;=</span> <span class="nx">PLATE_5</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">neededPlates</span><span class="p">[</span><span class="nx">PLATE_5</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">weightPerSide</span> <span class="o">-=</span> <span class="nx">PLATE_5</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">weightPerSide</span> <span class="o">&gt;=</span> <span class="nx">PLATE_2_5</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">neededPlates</span><span class="p">[</span><span class="nx">PLATE_2_5</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">weightPerSide</span> <span class="o">-=</span> <span class="nx">PLATE_2_5</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Weight sucessfully loaded</span><span class="dl">'</span><span class="p">);</span>
+<span class="k">return</span> <span class="nx">neededPlates</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="pruebas-y-depuración">Pruebas y Depuración</h2>
+<p>Probemos llamar a nuestra función con distintos valores que nos ayuden a verificar que se comporta de manera correcta en varios escenarios, por ejemplo, pasando valores menores al peso de 45 lbs de la barra y pasando distintos valores válidos y verificando que la suma del peso de los discos de ambos lados y la barra sea la correcta.</p>
+
+<p>Podemos usar un depurador o debugger para analizar de manera más detallada la ejecución de nuestro código en cualquier sección en la que tengamos dudas, sin embargo me parece que CodePen no es la opción más cómoda para depurar, así que para esto recomiendo usar otra herramienta, como Visual Studio Code o WebStorm.</p>
+
+<h2 id="separar-el-código-en-funciones-para-mantenerlo-limpio">Separar el código en funciones para mantenerlo limpio.</h2>
+
+<p>Nuestro proyecto funciona correctamente para el caso que describimos, sin embargo, se pueden realizar mejoras de estilo al código que nos ayudarán a hacer el código más entendible y hacerlo más fácil de modificar en el futuro o por otros compañeros de equipo.</p>
+
+<p>Una técnica muy simple y efectiva para mejorar la legibilidad del código es la de separarla en pequeñas funciones que realicen un propósito específico dentro de nuestro programa. Cuando creamos una nueva función de cierta manera creamos una etiqueta que describe cierto proceso o sección particular del programa, por lo tanto al tener varias funciones podemos sustituir bloques grandes de código por funciones que describan una función y al combinarlas obtendremos código que será muy similar a leer un texto normal.</p>
+
+<p>En este caso podemos usar las secciones indicadas en este texto para identificar funciones, de manera que tendremos una función para inicializar un map, funciones para realizar validaciones y una función para realizar nuestro proceso principal (colocar discos en la barra). Al crear estas funciones y combinarlas obtendremos un programa, y en particular un bloque principal, más legible, el cual se verá así.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getNeededPlatesForWeight</span><span class="p">(</span><span class="nx">weight</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">weight is: </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">weight</span><span class="p">);</span>
+    <span class="kd">let</span> <span class="nx">neededPlates</span> <span class="o">=</span> <span class="nx">initStandardWeightPlateSet</span><span class="p">();</span> <span class="c1">// Función para inicializar</span>
+    <span class="kd">let</span> <span class="nx">neededPlateWeight</span> <span class="o">=</span> <span class="nx">weight</span> <span class="o">-</span> <span class="nx">BARBELL_WEIGHT</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isNeededPlateWeightValid</span><span class="p">(</span><span class="nx">neededPlateWeight</span><span class="p">))</span> <span class="p">{</span> <span class="c1">// Fución para validaciones</span>
+        <span class="k">return</span> <span class="p">[];</span>
+    <span class="p">}</span>
+
+    <span class="kd">let</span> <span class="nx">neededWeightBySide</span> <span class="o">=</span> <span class="nx">neededPlateWeight</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="nx">calculateNeededPlatesBySide</span><span class="p">(</span><span class="nx">neededPlates</span><span class="p">,</span> <span class="nx">neededWeightBySide</span><span class="p">);</span> <span class="c1">// Función para agregar peso a la barra</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Load the following plates in each side of the bar: </span><span class="dl">'</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">neededPlates</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>El código completo de el programa dividido en funciones lo podemos ver en este otro CodePen <a href="https://codepen.io/mkfnx/pen/ZEGyLMX/">https://codepen.io/mkfnx/pen/ZEGyLMX/</a></p>
+
+<h2 id="conclusión-de-esta-fase">Conclusión de esta fase</h2>
+
+<p>Pudimos ver como resolver un algoritmo básico con JavaScript para un problema real, para el que incluso existen apps en tiendas que lo solucionan y los cuales son similares a proyectos necesarios para la certificación de freeCodeCamp.</p>
+
+<p>Hicimos una rápida revisión de herramientas útiles para crear y analizar nuestros proyectos.</p>
+
+<p>Analizamos este problema en distintas secciones con propósito específico como inicialización, validación y problema principal.</p>
+
+<p>También hicimos algunas observaciones sobre la importancia del estilo del código y vimos como al dividirlo en funciones podemos hacerlo más fácil de leer.</p>
+
+<h2 id="nota-final">Nota final</h2>
+
+<p>La definición del problema puede ser algo confusa, debido principalmente a como se distribuye el peso de la barra (peso por cada lado y peso de la barra misma), así que si tienes alguna duda no dudes en contactarnos en el <a href="https://www.facebook.com/groups/free.code.camp.mexico.df/">grupo de Facebook de freeCodeCamp CDMX</a> o el <a href="https://join.slack.com/t/fcccdmx/shared_invite/enQtOTc5MDc3NDMxNzY2LWZiMDk2OGVmMDk2ZjkzY2JlMzQ0N2VhY2ZjYTk3NTUyYmE0MGFlNDQ1NGVkOGUzNjg3NDY0YWViN2FkMDkwOWE">Slack de freeCodeCamp CDMX</a>.</p>
+:ET

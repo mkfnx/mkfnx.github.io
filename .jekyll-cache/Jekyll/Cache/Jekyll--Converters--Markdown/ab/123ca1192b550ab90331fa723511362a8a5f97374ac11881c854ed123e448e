@@ -1,0 +1,32 @@
+I"(<p>También necesitaremos el siguiente código JavaScript</p>
+<ul>
+  <li>Incluiremos el código de la fase anterior como un script reutilizable en nuestra página.</li>
+  <li>Crearemos nuevo código que nos permita reaccionar a las acciones del usuario en nuestra página y ejecutar nuestro código de la fase anterior.</li>
+</ul>
+
+<h1 id="código-javascript">Código JavaScript</h1>
+
+<h2 id="importar-script">Importar Script</h2>
+
+<p>Lo primero que necesitamos es incluir nuestro script de la etapa anterior, esto podemos hacerlo desde el menu Settings que está en la barra superior del entorno de CodePen, un poco a la derecha. Dentro de este menú de Settings seleccinamos la opción JS y en uno de los últimos campos de texto que aparecen en esa sección colocamos <a href="https://codepen.io/mkfnx/pen/ZEGyLMX/">la url de nuestro CodePen anterior</a> que contiene el algoritmo básico para calcular los discos necesarios en la barra. Finalmente presionamos el boton Save &amp; Close.</p>
+
+<p>Podemos comprobar que nuestro script fue correctamente cargado llamando una de las funciones que contiene, es decir escribimos el código <code class="highlighter-rouge">getNeededPlatesForWeight(200);</code> y en la consola  debemos ver un resultado como el de la fase anterior.</p>
+
+<h2 id="reaccionar-a-eventos-de-usuario">Reaccionar a eventos de usuario</h2>
+
+<h2 id="creando-y-agregando-un-disco">Creando y agregando un disco</h2>
+
+<h2 id="obtener-valores-introducidos-por-el-usuario">Obtener valores introducidos por el usuario</h2>
+
+<h2 id="verificación-de-datos">Verificación de datos</h2>
+
+<h2 id="ejecutar-solución-con-el-valor-indicado-por-el-usuario">Ejecutar solución con el valor indicado por el usuario</h2>
+
+<h2 id="verificación-solución-válida">Verificación solución válida</h2>
+
+<h2 id="crear-los-discos-indicados-por-la-solución-de-nuestro-script">Crear los discos indicados por la solución de nuestro script</h2>
+
+<h2 id="limpiar-resultados-de-soluciones-anteriores">Limpiar resultados de soluciones anteriores.</h2>
+
+<h2 id="conclusiones">Conclusiones</h2>
+:ET

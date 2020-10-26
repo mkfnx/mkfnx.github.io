@@ -1,0 +1,11 @@
+I"�<p>En esta fase vamos a crear una página web con HTML y CSS “puros” (es decir sin usar framework o biblioteca alguno) la cual servirá para crear una visualización en la que nosotros podamos indicar el peso que queramos calcular para nuestra barra, como mostramos en la captura de pantalla en la introducción de este proyecto y desde esta página HTML/CSS usaremos el código que creamos en la fase anterior.</p>
+
+<p>Puedes ver la segunda fase de este proyecto en este link de CodePen <a href="https://codepen.io/mkfnx/pen/XWbgpPZ/">https://codepen.io/mkfnx/pen/XWbgpPZ/</a></p>
+
+<h1 id="elementos-html">Elementos HTML</h1>
+<p>Para crear una visualización para nuestra calculadora de pesas vamos a usar los siguientes elementos HTML:</p>
+<ul>
+  <li>Un formulario que nos permita indicar el peso que queremos calcular.</li>
+  <li>Elementos HTML que gráficamente representen la barra y los discos. Aunque otra opción puede ser incluir gráficos o imagenes prediseñadas.</li>
+</ul>
+:ET

@@ -1,0 +1,41 @@
+I"�<p>En esta fase vamos a crear una página web con HTML y CSS “puros” (es decir sin usar framework o biblioteca alguno) la cual servirá para crear una visualización en la que nosotros podamos indicar el peso que queramos calcular para nuestra barra, como mostramos en la captura de pantalla en la introducción de este proyecto y desde esta página HTML/CSS usaremos el código que creamos en la fase anterior.</p>
+
+<p>Puedes ver la segunda fase de este proyecto en este link de CodePen <a href="https://codepen.io/mkfnx/pen/XWbgpPZ/">https://codepen.io/mkfnx/pen/XWbgpPZ/</a></p>
+
+<h1 id="elementos-de-la-solución-de-esta-fase">Elementos de la solución de esta fase</h1>
+<p>Para crear una visualización para nuestra calculadora de pesas vamos a usar los siguientes elementos HTML:</p>
+<ul>
+  <li>Un formulario que nos permita indicar el peso que queremos calcular.</li>
+  <li>Elementos HTML que gráficamente representen la barra y los discos. Aunque otra opción puede ser incluir gráficos o imagenes prediseñadas.</li>
+  <li>Algo de texto que describa el propósito y el uso de la calculadora.</li>
+</ul>
+
+<p>También necesitaremos el siguiente código JavaScript</p>
+<ul>
+  <li>Incluiremos el código de la fase anterior como un script reutilizable en nuestra página.</li>
+  <li>Crearemos nuevo código que nos permita reaccionar a las acciones del usuario en nuestra página y ejecutar nuestro código de la fase anterior.</li>
+</ul>
+
+<h1 id="elementos-html-y-css">Elementos HTML y CSS</h1>
+<p>Lo primero que haremos será crear una estructura básica de HTML y ciertos elementos “estáticos”, es decir, que no cambiaran mientras un usuario hace uso de nuestro proyecto. Estos elementos serán, el título, descripción, el formulario y estilo de elemento div de HTML que servirán para representar la barra y los discos.</p>
+
+<p>Para el título y la descripción por ahora usaremos elementos HTML sencillos (h1 y p), en las siguientes fases daremos más estilo a nuestro proyecto. Este código debemos agregarlo al panel de HTML de nuestro CodePen.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>Barbell Plates Calculator<span class="nt">&lt;/h1&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>The barbell and weight plates are used together to setup a specific weight load that can be comfortably and safely manipulated by a weightlifter in order to exercise or to compete.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>Sometimes, loading the required and correct weight into the bar can be a little confusing, time consuming or error prone (since probably you won’t make the best calculations in the middle of a weight lifting session).<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>This helpful calculator will help you to get the plates that you need to load into the bar, letting you focus only on completing your reps ;)<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<p>El formulario que nos permitirá introducir el peso que queremos calcular solo tendrá un texto y un botón. Para este proyecto de prueba usaremos estos elementos “sueltos”, es decir fuera de una etiqueta form, que es en donde normalmente los colocariamos y lo cual nos permite agregar otros comportamientos y estructura mejor nuestra página.</p>
+
+<p>En los elementos del form colocaremos dos propiedades muy importantes para el input de texto será un id, ya que es así como podremos obtener una referencia a él desde el código JavaScript y así poder obtener el valor que el usuario ingresó y para el botón necesitamos la propiedad onClick, la cual tendrá como valor el nombre de una función que más tarde agregaremos a nuestro código JavaScript, y a la cual nombré onCalculateButtonClicked.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"weightInput"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"calculateButton"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"Calculate Plates"</span> <span class="na">onclick=</span><span class="s">"onCalculateButtonClicked()"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+:ET

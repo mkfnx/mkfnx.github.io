@@ -3,10 +3,8 @@ layout: post
 title: Using data from the Facebook API in your Messenger bot
 ---
 
-This tutorial shows how to create a Django service that fetch data from the Facebook Graph API to be consumed by a Messenger Bot that will help users from Facebook Groups to discover the most relevant content in the group. Demo code can be obtained in GitHub and the sample project can be tested in this chatbot.
-
-## Introduction
-This tutorial shows how to create a Django service that fetch data from the Facebook Graph API to be consumed by a Messenger Bot that will help users from Facebook Groups to discover the most relevant content in the group. Demo code can be obtained in GitHub and the sample project can be tested in this chatbot.
+This tutorial shows how to create a Django service that fetch data from the Facebook Graph API to be consumed by a Messenger Bot.
+Demo code can be obtained in GitHub and the sample project can be tested in this bot.
 
 ## Project Description
 The project that we review in this tutorial is a Messenger bot that helps members of our Developer Circles Facebook group to discover relevant content. We retrieve the data of the Facebook group using the Graph API, analyze it and present it to the users via the bot so they can have easy access to the most relevant content of the group.
@@ -63,7 +61,7 @@ We found the following params defined in our urls:
 And now we include this app file into the `urlpatterns`  list of the main urls file
 ``` python
 urlpatterns = [  
-    path('', include('fb_data_miner.urls', namespace='fb')),
+    path('', include('fb_group_data.urls', namespace='fb')),
 ```
 
 Now we add the corresponding views for this urls, we'll describe the views in detail in the following sections.
@@ -80,6 +78,44 @@ def group(request, group_id):
 def group_weekly_summary(request, group_id, group_name, resp_format='html'):
 ```
 
+Also, don't forget to run the Django migrations so you can runt and test the project
+```
+python manage.py migrate
+```
+
+### Settings and .env
+The values referenced from `settings` are defined in the Django settings file and some of them are imported using the `dotenv` library, so we can keep this information stored only in our server and restricted to public access and avoid accidentally sending to public when uploading our code to services like GitHub.
+``` python
+import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+# Loading values from .env file
+basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, '.env'))
+
+# Facebook API settings, should remain secret and not be uploaded to public repositories
+FB_APP_ID = os.getenv('FB_APP_ID')
+FB_APP_SECRET = os.getenv('FB_APP_SECRET')
+FB_LOGIN_STATE_PARAM = os.getenv('FB_LOGIN_STATE_PARAM')
+
+# Constants used for building URLs of the Graph API endpoints
+GRAPH_API_VERSION = 'v8.0'
+HOST_NAME = 'http://localhost:8000/'
+FB_LOGIN_REDIRECT_PATH = 'fb_login_redirect'
+
+FB_LOGIN_REDIRECT_URI = f'{HOST_NAME}' + FB_LOGIN_REDIRECT_PATH
+FB_AUTH_PARAMS = f'client_id={FB_APP_ID}&redirect_uri={FB_LOGIN_REDIRECT_URI}'
+FB_LOGIN_URL = f'https://www.facebook.com/{GRAPH_API_VERSION}/dialog/oauth?{FB_AUTH_PARAMS} \
+&state={FB_LOGIN_STATE_PARAM}&scope=groups_show_list'
+
+GRAPH_API_BASE_URL = f'https://graph.facebook.com/{GRAPH_API_VERSION}'
+GRAPH_API_ACCESS_TOKEN_PATH = 'oauth/access_token'
+FB_APP_ACCESS_TOKEN_URL = f'{GRAPH_API_BASE_URL}/{GRAPH_API_ACCESS_TOKEN_PATH}?client_id={FB_APP_ID} \
+&grant_type=client_credentials'
+```
+
+
 ## Facebook Manual Login Flow
 The main usage of the Facebook API now occurs in client platforms such as the web browser and mobile apps, that's why the documentation now shows little info for server platforms and if we are interested on this we are practically left with the options of building a manual login flow, so we'll do that.
 
@@ -93,7 +129,7 @@ Given that we added the `login_required` decorator to our view if the user is no
 FB_LOGIN_URL = f'https://www.facebook.com/{GRAPH_API_VERSION}/dialog/oauth?{FB_AUTH_PARAMS} \  
 &state={FB_LOGIN_STATE_PARAM}&scope=groups_show_list'
 ```
-The params of this URL are defined in the aux file `fb_api_requests_urls.py` and inside it, some private values are imported using the Django settings file and the `env` library so we can keep this information stored only in our server and restricted to public access and avoid accidentally sending to public when uploading our code to services like GitHub.
+The params of this URL are defined in the aux file `fb_api_requests_urls.py` this constants are loaded using settings and env library as described in the Setup section.
 
 After the user authorizes our app, the callback url that we configured in Facebook and that we setup before in the urls file will be called.
 ``` python

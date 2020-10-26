@@ -1,0 +1,9 @@
+I"9<p>Puedes ver la segunda fase de este proyecto en este link de CodePen <a href="https://codepen.io/mkfnx/pen/XWbgpPZ/">https://codepen.io/mkfnx/pen/XWbgpPZ/</a></p>
+
+<h1 id="elementos-html">Elementos HTML</h1>
+<p>Para crear una visualización para nuestra calculadora de pesas vamos a usar los siguientes elementos HTML:</p>
+<ul>
+  <li>Un formulario que nos permita indicar el peso que queremos calcular.</li>
+  <li>Elementos HTML que gráficamente representen la barra y los discos. Aunque otra opción puede ser incluir gráficos o imagenes prediseñadas.</li>
+</ul>
+:ET

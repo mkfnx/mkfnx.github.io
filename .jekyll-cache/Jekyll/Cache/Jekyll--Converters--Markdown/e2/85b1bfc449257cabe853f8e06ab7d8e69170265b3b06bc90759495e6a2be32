@@ -1,0 +1,28 @@
+I"�<p>Como parte de las actividades de apoyo a la comunidad de freeCodeCamp CDMX estaré publicando algunos ejemplos que sirvan como guía para realizar los proyectos necesarios para obtener las certificaciones. Este proyecto es una calculadora para el peso de una barra olímpica, el cual puede servir de guía para el proyecto <a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/javascript-algorithms-and-data-structures-projects/cash-register">Cash Register</a> o para otros proyectos de maquetación o frameworks de la certificación de FrontEnd de freeCodeCamp.</p>
+
+<h1 id="descripción-del-proyecto">Descripción del Proyecto</h1>
+
+<h2 id="contexto-y-conceptos">Contexto y Conceptos</h2>
+<p>Las barras y los discos de peso son equipo muy común en los gimnasios, con ellos se puede crear un peso ajustable para que una persona puede cargarlo de manera cómoda y segura con el fin de ejercitarse o competir.</p>
+
+<p>Hay distintos discos con diferentes pesos, los pesos más comunes tienen los siguientes valores (en libras): 2.5, 5, 10, 25, 35 y 45. Dada esta variedad de pesos, a veces ajustar nuestra barra al peso deseado puede ser un poco confuso, tardado o hasta podríamos equivocarnos (nuestros cálculos podrían no ser los mejores a mitad de una sesión intensa de gym). Es por esto que me pareció interesante replicar el funcionamiento de <a href="https://play.google.com/store/apps/details?id=feliform.justlift">una app que uso para esto, llamada Just Lift</a>, la cual calcula los discos que debo colocar en la barra para configurarla con el peso que yo desee.</p>
+
+<h2 id="fases-del-proyecto">Fases del Proyecto</h2>
+<p>Voy a dividir este proyecto en varias fases que puedan ayudar a ejercitar distintos aspectos del desarrollo frontend como algoritmos, maquetación, estilo y bibliotecas de código. Las fases estarán organizadas de manera que el proyecto mejore y sea más complejo poco a poco, y serán las siguientes:</p>
+
+<ol>
+  <li><a href="/fCC-Barbell-1">Algoritmo básico para calcular los discos necesarios para cierto peso (Supondremos que tenemos discos ilimitados de cada peso)</a></li>
+  <li><a href="/fCC-Barbell-2">Creación de elementos HTML y CSS para visualizar resultado</a></li>
+  <li>[Enlazar Script JavaScript con elementos HTML y CSS para crear una visualización dinámica]</li>
+  <li>Mejorar la visualización usando una biblioteca CSS</li>
+  <li>Algoritmo para un caso más complejo en los que ciertos discos pueden tener poca o ninguna disponibilidad.</li>
+  <li>Integrando una biblioteca o framework de frontend en el proyecto.</li>
+</ol>
+
+<h2 id="resultado-final">Resultado Final</h2>
+
+<p>Una vez completado nuestro proyecto, tendremos algo similar a lo siguiente:</p>
+
+<h2><img src="/images/barbell-calculator-example-just-lift-app.png" alt="Ejemplo de resultado de proyecto" /></h2>
+<p>Captura de pantalla de la <a href="(https://play.google.com/store/apps/details?id=feliform.justlift)">app Just Lift</a>, creada por Feliform</p>
+:ET

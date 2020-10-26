@@ -1,0 +1,108 @@
+I"�)<p>En esta fase vamos a crear elementos HTML y CSS que servirán para crear una visualización para el resultado del problema que solucionamos en la fase anterior.</p>
+
+<p>Puedes ver la segunda fase de este proyecto en este link de CodePen <a href="https://codepen.io/mkfnx/pen/XWbgpPZ/">https://codepen.io/mkfnx/pen/XWbgpPZ/</a></p>
+
+<h1 id="elementos-de-la-solución-de-esta-fase">Elementos de la solución de esta fase</h1>
+<p>Para crear una visualización para nuestra calculadora de pesas vamos a usar los siguientes elementos HTML:</p>
+<ul>
+  <li>Un formulario que nos permita indicar el peso que queremos calcular.</li>
+  <li>Elementos HTML que gráficamente representen la barra y los discos. Aunque otra opción puede ser incluir gráficos o imagenes prediseñadas.</li>
+  <li>Un título y una descripción de la página para indicar el propósito y el uso de la calculadora.</li>
+</ul>
+
+<h1 id="texto-y-descripción">Texto y Descripción</h1>
+<p>Lo primero que haremos será crear una estructura básica de HTML y ciertos elementos “estáticos”, es decir, que no cambiaran mientras un usuario hace uso de nuestro proyecto. Estos elementos serán, el título, descripción, el formulario y estilo de elemento div de HTML que servirán para representar la barra y los discos.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>Barbell Plates Calculator<span class="nt">&lt;/h1&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>The barbell and weight plates are used together to setup a specific weight load that can be comfortably and safely manipulated by a weightlifter in order to exercise or to compete.<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>Sometimes, loading the required and correct weight into the bar can be a little confusing, time consuming or error prone (since probably you won’t make the best calculations in the middle of a weight lifting session).<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>This helpful calculator will help you to get the plates that you need to load into the bar, letting you focus only on completing your reps ;)<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<p>Para el título y la descripción por ahora usaremos elementos HTML sencillos (h1 y p), en las siguientes fases daremos más estilo a nuestro proyecto. Este código debemos agregarlo al panel de HTML de nuestro CodePen.</p>
+
+<h1 id="formulario-para-ingresar-datos">Formulario para ingresar datos</h1>
+<p>El formulario que nos permitirá introducir el peso que queremos calcular solo tendrá un texto y un botón. Para este proyecto de prueba usaremos estos elementos “sueltos”, es decir fuera de una etiqueta form, que es en donde normalmente los colocariamos y lo cual sí debemos hacer en un proyecto real ya que nos permite agregar otros comportamientos y estructurar mejor nuestra página.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"weightInput"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"calculateButton"</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">value=</span><span class="s">"Calculate Plates"</span> <span class="na">onclick=</span><span class="s">"onCalculateButtonClicked()"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>En los elementos del form definimos dos propiedades muy importantes:</p>
+<ul>
+  <li>En el input de texto indicamos un id, ya que es así como podremos referirnos a él desde el código JavaScript y así poder obtener el valor que el usuario ingresó</li>
+  <li>Para el botón necesitamos la propiedad onClick, la cual tendrá como valor el nombre de una función que más tarde agregaremos a nuestro código JavaScript, y la cual en este caso nombré onCalculateButtonClicked. Estas funciones en general reciben un nombre que sigue una convención que ayuda a expresar que reaccionan a un evento, por ello comienza con <code class="highlighter-rouge">on</code> (al ocurrir) y termina con <code class="highlighter-rouge">Clicked</code> (el nombre del evento, en este caso un click) y entre ellos el nombre del elemento que genera el evento (<code class="highlighter-rouge">CalculateButton</code>).</li>
+</ul>
+
+<h1 id="sección-de-visualización">Sección de Visualización</h1>
+<p>Debajo de estos elementos estará la sección en dónde colocaremos los elementos que representarán los discos y la barra, para estos usaremos divs de HTML, pero para darles la apariencia de un disco o barra usaremos CSS. Para hacer una prueba de los elementos de la visualización usaremos 3 divs fijos, pero cuando nuestro esta fase del proyecto esté completa usaremos JavaScript para crear de manera dinámica los divs necesarios para el peso indicado por un usuario. El código HTML de prueba será el siguiente:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"barbell"</span><span class="nt">&gt;</span>
+  45
+<span class="nt">&lt;/div&gt;</span>
+  
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"plate plate35"</span><span class="nt">&gt;</span>
+  35
+<span class="nt">&lt;/div&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"plate plate5"</span><span class="nt">&gt;</span>
+  5
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+<p>Vemos que nuestros elementos tienen las siguientes propiedades</p>
+<ul>
+  <li>En el primer div que representará la barra colocaremos un id con nombre barbell, este id nos permitirá asociarle un estilo CSS a este elemento.</li>
+  <li>Los siguientes elementos div representarán discos, y en su propiedad class asignamos los valores plate y plate35, el primero será para hacer referencia a un estilo general de todos los discos (color, borde, ancho) y el segundo será para asignar estilo particular de cada disco (altura).</li>
+</ul>
+
+<p>A pesar de haber agregado nuestros elementos no veremos nada más que números debajo de nuestro form, esto es debido al estilo default que los divs tienen en un documento HTML, para cambiar esto y que comencemos a ver algo que parezca una barra agregaremos el siguiente código CSS en el segundo panel de nuestro CodePen.</p>
+
+<h1 id="código-css">Código CSS</h1>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">#barbell</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#AAA</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">90px</span><span class="p">;</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">text-align</span><span class="p">:</span> <span class="nb">center</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">0</span> <span class="nb">auto</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="no">black</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.plate</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="n">inline-block</span><span class="p">;</span>
+  <span class="nl">width</span><span class="p">:</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="nl">vertical-align</span><span class="p">:</span> <span class="nb">middle</span><span class="p">;</span>
+  <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="no">black</span><span class="p">;</span>
+  <span class="nl">background-color</span><span class="p">:</span> <span class="m">#F00</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nc">.plate45</span> <span class="p">{</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c">/* Los estilos de los otros discos solo cambian en altura */</span>
+
+<span class="nc">.plate2p5</span> <span class="p">{</span>
+  <span class="nl">height</span><span class="p">:</span> <span class="m">25px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Después de agregar este estilo, veremos lo siguiente:</p>
+
+<p><img src="/images/barbell-calculator-static-visualization.png" alt="Ejemplo de visualización de la barra olímpica" /></p>
+
+<p>En este código CSS usamos las propiedades <code class="highlighter-rouge">background-color</code> y <code class="highlighter-rouge">border</code> para hacer visible el área rectangular que ocupan todos los divs y asignamos un tamaño con mayor longitud para representar una barra y un tamaño con mayor altura para representar un disco. Además las propiedades <code class="highlighter-rouge">display</code> y <code class="highlighter-rouge">vertical-align</code> se usan para alinear los divs a manera que den apariencia de que los elementos que representan los discos están colocados sobre el elemento que representa la barra. También definimos una clase CSS para cada disco en particular la cual nos permitirá asignarles diferentes alturas a cada uno.</p>
+
+<h1 id="conclusión">Conclusión</h1>
+
+<p>Con esto tenemos lo necesario para pasar a la siguiente fase de proyecto en la que usaremos nuestro código JavaScript de la fase 1 para mostrar una visualización para dar respuesta al usuario usando los elementos de discos y barras que desarrollamos en esta fase.</p>
+
+<p>Si tienes alguna puedes preguntarla en el <a href="https://www.facebook.com/groups/free.code.camp.mexico.df/">grupo de Facebook de freeCodeCamp CDMX</a> o el <a href="https://join.slack.com/t/fcccdmx/shared_invite/enQtOTc5MDc3NDMxNzY2LWZiMDk2OGVmMDk2ZjkzY2JlMzQ0N2VhY2ZjYTk3NTUyYmE0MGFlNDQ1NGVkOGUzNjg3NDY0YWViN2FkMDkwOWE">Slack de freeCodeCamp CDMX</a> o incluso contactarme a través de alguna red social de las que aparecen en el footer de este sitio.</p>
+
+<p><em>Siguiente fase disponible próximamente</em></p>
+:ET
