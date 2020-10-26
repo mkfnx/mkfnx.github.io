@@ -17,7 +17,7 @@ Voy a dividir este proyecto en varias fases que puedan ayudar a ejercitar distin
 
 1. [Algoritmo básico para calcular los discos necesarios para cierto peso (Supondremos que tenemos discos ilimitados de cada peso)]({{ site.baseurl }}/fCC-Barbell-1)
 2. [Creación de elementos HTML y CSS para visualizar resultado]({{ site.baseurl }}/fCC-Barbell-2)
-3. Enlazar nuestro JavaScript con los elementos HTML y CSS para crear una visualización dinámica.
+3. Enlazar nuestro JavaScript con los elementos HTML y CSS para crear una visualización dinámica. [Creación de elementos HTML y CSS para visualizar resultado]({{ site.baseurl }}/fCC-Barbell-3)
 4. Mejorar la visualización usando una biblioteca CSS.
 5. Algoritmo para un caso más complejo en los que ciertos discos pueden tener poca o ninguna disponibilidad.
 6. Integrando una biblioteca o framework de frontend en el proyecto.
