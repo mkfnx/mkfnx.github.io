@@ -3,23 +3,23 @@ layout: post
 title: Usando datos del API de Facebook en tu bot de Messenger
 ---
 
-Este tutorial muestra como crear un servicio de Django que obtenga información de el Graph API de Facebook para que sea consumida por un bot de Messenger.
+Este tutorial muestra cómo crear un servicio de Django que obtenga información del Graph API de Facebook para que sea consumida por un bot de Messenger.
 El código de demo está disponible en GitHub y el proyecto de muestra se puede probar en este bot.
 
-## Descriptción del Proyecto
+## Descripción del Proyecto
 El proyecto que mostramos en este tutorial es un bot de Messenger que ayuda a los miembros de nuestro grupo de Facebook de Developer Circles a descubrir el contenido más relevante del grupo. Este proyecto obtiene información del grupo de Facebook usando el Graph API, posteriormente analiza la información y finalmente la expone a través de una respuesta JSON para que pueda mostrarse en un bot de Messenger.
 
 ![Group API response received in Messenger](https://i.ibb.co/dLDDhmB/Screen-Shot-2020-10-26-at-4-56-22.png)
 
-El siguiente diagrama muestra una vista básica de los componentes del proyecto. Nos enfocaremos en el ladod erecho de la imagen. En particular en el `Content Parser Service` el cual es el encargado de obtener y procesar la información del API y de entregarla en formato JSON. Este servicio puede estar hosteado en el mismo servidor que el bot o en uno diferente, lo cual facilita su integración. 
+El siguiente diagrama muestra una vista básica de los componentes del proyecto. Nos enfocaremos en el lado derecho de la imagen. En particular en el `Content Parser Service` el cual es el encargado de obtener y procesar la información del API y de entregarla en formato JSON. Este servicio puede estar hosteado en el mismo servidor que el bot o en uno diferente, lo cual facilita su integración. 
 
 ![Bot server diagram](https://i.ibb.co/4PD19DX/Graph-Api-Bot-Diagram.png)
 
 ## Pre-requisitos
 * Python y pipenv instalados.
 * Familiaridad con la biblioteca requests de Python.
-* Saber como crear proyectos de Django y familiaridad con conceptos de Django como views, responses y templates.
-* Saber como configurar un bot de Messenger en cualquier platforma que permita consumir un servicio web o API. En este tutorial usaremos Chatfuel.
+* Saber cómo crear proyectos de Django y familiaridad con conceptos de Django como views, responses y templates.
+* Saber cómo configurar un bot de Messenger en cualquier plataforma que permita consumir un servicio web o API. En este tutorial usaremos Chatfuel.
 
 ## Configurando el ambiente virtual usando pipenv
 Primero, creamos una nueva carpeta para nuestro proyecto y nos movemos dentro de él
@@ -66,7 +66,7 @@ urlpatterns = [
     path('', include('fb_group_data.urls', namespace='fb')),
 ```
 
-Luego agregamos las views correspondientes a estas urls, en las siguientes secciones describiremos a detalle como funcinoan estas views.
+Luego agregamos las views correspondientes a estas urls, en las siguientes secciones describiremos a detalle cómo funcionan estas views.
 ``` python
 def fb_login_redirect(request):
 
@@ -86,7 +86,7 @@ python manage.py migrate
 ```
 
 ### Settings y .env
-Los valores a los que se hace referencia con el prefijo `settings` están definidos en el archivo de settings de Django y algunos de ellos se importan usando la biblioteca `dotenv`, de esta forma podemos mantener estaá información segura en nuestro servidor y evitar exponerla cuando enviemos nuestro código a servidores públicos como GitHub.
+Los valores a los que se hace referencia con el prefijo `settings` están definidos en el archivo de settings de Django y algunos de ellos se importan usando la biblioteca `dotenv`, de esta forma podemos mantener está información segura en nuestro servidor y evitar exponerla cuando enviemos nuestro código a servidores públicos como GitHub.
 ``` python
 import os
 from pathlib import Path
@@ -120,7 +120,7 @@ FB_APP_ACCESS_TOKEN_URL = f'{GRAPH_API_BASE_URL}/{GRAPH_API_ACCESS_TOKEN_PATH}?c
 
 ## Proceso Manual de Login en Facebook
 Actualmente el uso principal del API de Facebook sucede en plataformas cliente como el navegador web o aplicaciones móviles
-por ello la documentación contiene poco contenido sobre plataformas de servidor así que practicamente solo nos queda la opción de realizar manualmente el inicio de sesión, así que eso es lo que haremos.
+por ello la documentación contiene poco contenido sobre plataformas de servidor así que prácticamente solo nos queda la opción de realizar manualmente el inicio de sesión, así que eso es lo que haremos.
 
 El flujo de inicio de sesión comienza en nuestra vista home
 ``` python
@@ -132,9 +132,9 @@ Debido a que agregamos el decorador `login_required` a nuestra view el usuario n
 FB_LOGIN_URL = f'https://www.facebook.com/{GRAPH_API_VERSION}/dialog/oauth?{FB_AUTH_PARAMS} \  
 &state={FB_LOGIN_STATE_PARAM}&scope=groups_show_list'
 ```
-Los parametros de esta URL están definidos en el archivo auxiliar `fb_api_requests_urls.py` y las constantes mostradas se cargan de igual manera desde el archivo settings como se describió en la sección de configuración del proyecto.
+Los parámetros de esta URL están definidos en el archivo auxiliar `fb_api_requests_urls.py` y las constantes mostradas se cargan de igual manera desde el archivo settings como se describió en la sección de configuración del proyecto.
 
-Despueés de que el usuario inicia sesión y autoriza nuestra aplicación, se llama a nuestra URL callback, la cual se procesa en esta view: 
+Después de que el usuario inicia sesión y autoriza nuestra aplicación, se llama a nuestra URL callback, la cual se procesa en esta view: 
 ``` python
 def fb_login_redirect(request):  
     """  
@@ -172,7 +172,7 @@ def fb_login_redirect(request):
 	request.session[fb_api.KEY_FB_AUTH_TOKEN] = token_response['access_token']  
     return redirect('fb:home')
 ```
-Este código es algo extenso, pero básicamente verifica la validez de `auth_token`, si no es válida o si no existe un token guardado anteriormente, se solicita un token nuevo y se redirige al usuario nuevamente al view `home` en donde podraá continuar con el flujo normal para seleccionar el grupo y el tipo de contenido.
+Este código es algo extenso, pero básicamente verifica la validez de `auth_token`, si no es válida o si no existe un token guardado anteriormente, se solicita un token nuevo y se redirige al usuario nuevamente al view `home` en donde podrá continuar con el flujo normal para seleccionar el grupo y el tipo de contenido.
 
 ## El API de Grupos de Facebook
 Una vez en la view `home` se muestra al usuario una lista de los grupos que administra.
@@ -217,10 +217,10 @@ def get_managed_groups(request):
   
     return user_managed_groups
 ```
-Esta función contiene un ciclo while que llama al API de grupos para obtener todos los grupos del usuarios, los cuales son entregados en distintas páginas. Y debido a que deseamos obtener solo los grupos que el usuario administra, filtramos la respuesta de cada paágina usando una función lambda que verifica si la propiedad `administrator` de cada grupo tiene un valor de `true`.
-También es importante notar que el ciclo while terminaraá cuando la respuesta de cierta paágina no contiene una propiedad `next` la cual es la forma de indicar el final de los resultados, según se describe en la [sección de paginación del Graph API](https://developers.facebook.com/docs/graph-api/using-graph-api/#paging).
+Esta función contiene un ciclo while que llama al API de grupos para obtener todos los grupos del usuarios, los cuales son entregados en distintas páginas. Y debido a que deseamos obtener solo los grupos que el usuario administra, filtramos la respuesta de cada página usando una función lambda que verifica si la propiedad `administrator` de cada grupo tiene un valor de `true`.
+También es importante notar que el ciclo while terminará cuando la respuesta de cierta página no contiene una propiedad `next` la cual es la forma de indicar el final de los resultados, según se describe en la [sección de paginación del Graph API](https://developers.facebook.com/docs/graph-api/using-graph-api/#paging).
 
-Cuando seleccionamos la opcioón `Weekly summary`, el usuario verá una lista de los posts maás populares que han sido compartidos durante esta semana, aunque también es posible ajustar el periodo de tiempo usando parámetros de las funciones que obtienen la información del grupo.
+Cuando seleccionamos la opción `Weekly summary`, el usuario verá una lista de los posts más populares que han sido compartidos durante esta semana, aunque también es posible ajustar el periodo de tiempo usando parámetros de las funciones que obtienen la información del grupo.
 ``` python
 @login_required(login_url=settings.FB_LOGIN_URL)  
 def group_weekly_summary(request, group_id, group_name, resp_format='html'):  
@@ -238,9 +238,9 @@ def group_weekly_summary(request, group_id, group_name, resp_format='html'):
     group_feed.sort(key=lambda x: x.get('shares', {'count': 0})['count'] + len(x.get('comments',{'data': []})['data']), reverse=True)  
     total_comments, top_commented_post, total_shares, top_shared_post = parse_feed_info(group_feed)
 ```
-El proceso para obtener los posts maás populares es muy similar a como obtuvimos los grupos que el usuario administra, usamos un ciclo while (dentro de la función auxiliar `get_all_group_post_from_period`) para obtener todas las páginas de resultados de posts y los filtramos los posts de baja interacción usando funciones lambda. Y finalmente ordenamos los posts de mayor a menor interacción para que el usuario vea primer los posts más relevantes.
+El proceso para obtener los posts más populares es muy similar a como obtuvimos los grupos que el usuario administra, usamos un ciclo while (dentro de la función auxiliar `get_all_group_post_from_period`) para obtener todas las páginas de resultados de posts y los filtramos los posts de baja interacción usando funciones lambda. Y finalmente ordenamos los posts de mayor a menor interacción para que el usuario vea primer los posts más relevantes.
 
-Continuando con la descripción del view `gropu_weekly_summary`, dependiendo del valor del parámetro `format` en la URL, la respuesta puede mostrarse como HTML, como lo hemos estado haciendo, o en formato JSON para que pueda ser consumida por nuestro bot de Messenger.
+Continuando con la descripción del view `group_weekly_summary`, dependiendo del valor del parámetro `format` en la URL, la respuesta puede mostrarse como HTML, como lo hemos estado haciendo, o en formato JSON para que pueda ser consumida por nuestro bot de Messenger.
 ``` python
 if resp_format == 'html':  
     context = {  
@@ -278,11 +278,11 @@ Se creará un nuevo elemento action, presionamos en el botón `+Add action` del 
 
 ![Configuring JSON Request action in Chatfuel](https://i.ibb.co/T1jVKDg/Screen-Shot-2020-10-26-at-10-00-27.png)
 
-Cuando seleccionamos esa opción se mostrará una sección para configrar la petición a nuestro servidor como JSON Request, en esta vista, seleccionamos el tipo del request como GET colocamos la url del que corresponde a nuestra vista de `Weekly Summary`, asegurandonos de que l parámetro `format` tenga el valor de `json`
+Cuando seleccionamos esa opción se mostrará una sección para configurar la petición a nuestro servidor como JSON Request, en esta vista, seleccionamos el tipo del request como GET colocamos la url del que corresponde a nuestra vista de `Weekly Summary`, asegurándonos de que el parámetro `format` tenga el valor de `json`
 
 ![enter image description here](https://i.ibb.co/HzrF9m9/Screen-Shot-2020-10-26-at-10-02-32.png)
 
-Y eso es todo, ya podemos enviar mensajes desde nuestro bot que dispararán una petición de información al API Graph de Facebook que después podemos procesar y enviar al usuario. Espero que haya sido útil!
+Y eso es todo, ya podemos enviar mensajes desde nuestro bot que dispararán una petición de información al API Graph de Facebook que después podemos procesar y enviar al usuario. ¡Espero que haya sido útil!
 
 ## Referencias
 [Facebook Graph API](https://developers.facebook.com/docs/graph-api/)
