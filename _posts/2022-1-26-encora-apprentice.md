@@ -13,4 +13,5 @@ Hablé en TikTok sobre el programa de Apprentice de Encora, este post es para co
 
 [Plática con Dayra Chiu, coordinadora de Encora Apprentice](https://www.facebook.com/groups/DevCCiudaddeMexico/posts/1678761125635025/)
 
-Video de Tiktok Próximamente...
+## Video de Tiktok
+<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@mkfnx/video/7060289065354071301" data-video-id="7060289065354071301" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@mkfnx" href="https://www.tiktok.com/@mkfnx">@mkfnx</a> <a title="desarrollodesoftware" target="_blank" href="https://www.tiktok.com/tag/desarrollodesoftware">#desarrollodesoftware</a> <a title="ingenieriadesoftware" target="_blank" href="https://www.tiktok.com/tag/ingenieriadesoftware">#ingenieriadesoftware</a> <a title="empleos" target="_blank" href="https://www.tiktok.com/tag/empleos">#empleos</a> <a target="_blank" title="♬ sonido original - Miguel" href="https://www.tiktok.com/music/sonido-original-7060289028846832389">♬ sonido original - Miguel</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
