@@ -4,7 +4,9 @@ title: ChatGPT la nueva Inteligencia Artificial de OpenAI con la que podremos te
 ---
 
 Gracias a esta IA tu Alexa, Siri o el asistente de IA que uses pronto pudiera volverse mucho más útil e inteligente.
-  
+
+<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@mkfnx/video/7172256405787872517" data-video-id="7172256405787872517" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@mkfnx" href="https://www.tiktok.com/@mkfnx?refer=embed">@mkfnx</a> <a title="chatgpt" target="_blank" href="https://www.tiktok.com/tag/chatgpt?refer=embed">#ChatGPT</a> el nuevo proyecto de <a title="openai" target="_blank" href="https://www.tiktok.com/tag/openai?refer=embed">#OpenAI</a> que permite aplicar todo el poder de los nuevos modelos de <a title="inteligenciaartificial" target="_blank" href="https://www.tiktok.com/tag/inteligenciaartificial?refer=embed">#InteligenciaArtificial</a> <a target="_blank" title="♬ sonido original - Miguel" href="https://www.tiktok.com/music/sonido-original-7172256460897438469?refer=embed">♬ sonido original - Miguel</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+
 Esta nueva IA se llama [ChatGPT](https://openai.com/blog/chatgpt/), ha sido creada por [OpenAI](https://openai.com/), el grupo de investigación de inteligencia artificial que cuenta con participación de varias de las más importantes empresas tecnológicas y quien también es creador de [Dall-e](https://openai.com/dall-e-2/) y [GPT3](https://openai.com/api/), otras IAs que son capaces de generar obras completas de imagen y texto a partir de únicamente una descripción que nosotros le indiquemos en formato texto.
 
 Cuando interactuamos con asistentes de IA actuales tenemos que cuidar bastante cómo decimos las cosas para que puedan entendernos y hacer algo útil, y aún así, muchas veces tenemos resultados pobres como solo ser dirigidos a una búsqueda de google o que de plano nos diga no no nos entiende o no lo puede hacer.
