@@ -1,6 +1,6 @@
 ---  
 layout: post  
-title: Head first: La serie de libros que hackean tu cerebro para ayudarte a aprender.
+title: Head first, La serie de libros que hackean tu cerebro para ayudarte a aprender.
 ---
 
 La serie de libros Head First de O'Reilly es famosa por tener un estilo muy particular de presentar el contenido.
