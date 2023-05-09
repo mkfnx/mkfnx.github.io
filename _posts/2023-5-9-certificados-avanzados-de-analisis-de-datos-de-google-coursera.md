@@ -3,7 +3,7 @@ layout: post
 title: Certificados avanzados de Análisis de Datos de Google y Coursera
 ---
 
-Dos nuevos Certificados Profesionales de Google han sido lanzados en Coursera - [Google Advanced Data Analytics]((https://imp.i384100.net/bakjGP)) y [Google Business Intelligence Professional](https://imp.i384100.net/R5021a).
+Dos nuevos Certificados Profesionales de Google han sido lanzados en Coursera - [Google Advanced Data Analytics](https://imp.i384100.net/bakjGP) y [Google Business Intelligence Professional](https://imp.i384100.net/R5021a).
 
 En este video de TikTok y en el texto de este blog explico un poco más sobre el contenido de estos certificados.
 
