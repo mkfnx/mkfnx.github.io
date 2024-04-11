@@ -3,9 +3,11 @@ layout: post
 title: Programé una web para ver las palabras más mencionadas en las mañaneras
 ---
 
-La web es [palabrera.info](palabrera.info), muestra nubes de palabras de las [conferencias diarias](palabrera.info/conferencias_diarias) y tiene una [búsqueda](palabrera.info/busqueda) muy simple para encontrar las conferencias en las que cierta palabra fue de las 10 más mencionadas.
+La web es [palabrera.info](https://palabrera.info), muestra nubes de palabras de las [conferencias diarias](https://palabrera.info/conferencias_diarias) y tiene una [búsqueda](https://palabrera.info/busqueda) muy simple para encontrar las conferencias en las que cierta palabra fue de las 10 más mencionadas.
 
-También generé gráficas de ciertos periodos acumulados, como la de aquí abajo que es de lo más mencionado en todas las mañaneras. Sorpresivamente (al menos para mi), no están temas como "opositores" o "mafia", aunque sí algunos como "pueblo" o en periodos más recientes, "medios".
+También generé gráficas de ciertos periodos acumulados, como la de aquí abajo que es de lo más mencionado en todas las mañaneras. Sorpresivamente (al menos para mi), no están temas como "opositores" o "mafia", aunque sí algunos como "pueblo", "salud" o en periodos más recientes, "medios".
+
+![Nube de palabras de las palabras más mencionadas en las mañaneras de AMLO, hasta Abril de 2024]({{ site.baseurl }}/images/barbell-calculator-static-visualization.png)
 
 Vi que ha habido algunos proyectos parecidos, incluida [una publicación en Reddit](https://www.reddit.com/r/mexico/comments/ft3rz0/nube_de_palabras_de_amlo_de_la_ma%C3%B1anera_de_hoy/), pero no encontré alguno que cubriera todas las conferencias o que permitiera buscar. Esto puede ser útil para alguien que busque referencias de la mañanera o quiera saber cuándo se habló de algún tema. También es un proyecto que hice como práctica de ingeniería y análisis de datos porqué últimamente he estado aprendiendo y [creando contenido](tiktok.com/@mkfnx) sobre esos temas.
 
