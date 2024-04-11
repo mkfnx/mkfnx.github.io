@@ -5,11 +5,11 @@ title: Programé una web para ver las palabras más mencionadas en las mañanera
 
 La web es [palabrera.info](https://palabrera.info), muestra nubes de palabras de las [conferencias diarias](https://palabrera.info/conferencias_diarias) y tiene una [búsqueda](https://palabrera.info/busqueda) muy simple para encontrar las conferencias en las que cierta palabra fue de las 10 más mencionadas.
 
-También generé gráficas de ciertos periodos acumulados, como la de aquí abajo que es de lo más mencionado en todas las mañaneras. Sorpresivamente (al menos para mi), no están temas como "opositores" o "mafia", aunque sí algunos como "pueblo", "salud" o en periodos más recientes, "medios".
+También generé gráficas de ciertos periodos acumulados, como la de aquí abajo que es de lo más mencionado en todas las mañaneras. Sorpresivamente (al menos para mi), no están temas como "opositores" o "mafia", aunque sí algunos como "pueblo", "salud", "bienestar" o "campaña"
 
 ![Nube de palabras de las palabras más mencionadas en las mañaneras de AMLO, hasta Abril de 2024]({{ site.baseurl }}/images/wordcloud_mananeras_all_time.png)
 
-Vi que ha habido algunos proyectos parecidos, incluida [una publicación en Reddit](https://www.reddit.com/r/mexico/comments/ft3rz0/nube_de_palabras_de_amlo_de_la_ma%C3%B1anera_de_hoy/), pero no encontré alguno que cubriera todas las conferencias o que permitiera buscar. Esto puede ser útil para alguien que busque referencias de la mañanera o quiera saber cuándo se habló de algún tema. También es un proyecto que hice como práctica de ingeniería y análisis de datos porqué últimamente he estado aprendiendo y [creando contenido](tiktok.com/@mkfnx) sobre esos temas.
+Vi que ha habido algunos proyectos parecidos, incluida [una publicación en Reddit](https://www.reddit.com/r/mexico/comments/ft3rz0/nube_de_palabras_de_amlo_de_la_ma%C3%B1anera_de_hoy/), pero no encontré alguno que cubriera todas las conferencias o que permitiera buscar. Esto puede ser útil para alguien que busque referencias de la mañanera o quiera saber cuándo se habló de algún tema. También es un proyecto que hice como práctica de ingeniería y análisis de datos porqué últimamente he estado aprendiendo y [creando contenido](https://tiktok.com/@mkfnx) sobre esos temas.
 
 En el procesamiento del texto se omiten palabras comunes pero poco relevantes ([stopwords](https://es.wikipedia.org/wiki/Palabra_vac%C3%ADa#:~:text=Palabras%20vac%C3%ADas%20es%20el%20nombre,en%20lenguaje%20natural%20%28texto%29.)). Usé una lista ya establecida de [stopwords de la biblioteca nltk](https://www.nltk.org/search.html?q=stopwords), pero esto depende mucho del contexto y después de generar algunas gráficas decidí agregar más stopwords, esas se pueden ver en la sección de [Sobre este sitio](https://palabrera.info/sobre_este_sitio).
 
@@ -19,7 +19,7 @@ Agradezco cualquier feedback, sugerencia de feature, etc.
 
 ### Algunos detalles técnicos 🤓
 
-Hice scrapping de la [página del gobierno que publica la versión estenográfica](%60presidente.gob.mx/secciones/version-estenografica/%60) de las conferencias y las almacené todo el texto en un txt por día. Aunque algunas transcripciones tienen la fecha mal indicada.
+Hice scrapping de la [página del gobierno que publica la versión estenográfica](https://presidente.gob.mx/secciones/version-estenografica/) de las conferencias y las almacené todo el texto en un txt por día. Aunque algunas transcripciones tienen la fecha mal indicada.
 
 Con la biblioteca [WordCloud for Python](https://amueller.github.io/word_cloud/) generé mapas de frecuencias y las gráficas de nubes. También incluyo una gráfica de barras creada con matplotlib para que en palabras con menciones similares quede más claro cuál es la más mencionada.
 
