@@ -25,12 +25,12 @@ Los datos personales que obtenemos de estas tecnologías de rastreo son los sigu
 
 ### ¿Con quién compartimos su información personal y para qué fines?
 Nuestros productos hacen uso de los siguientes servicios de terceros, los cuales recaban y procesan información de acuerdo a lo específicado en sus propias políticas de privacidad:
-* Google AdMob: Para mostrar publicidad dentro de las aplicaciones.
-* Firebase Analytics: Para obtener información sobre el uso de las funcionalidades del producto.
+* Google:	Publicidad, estadísticas de uso y análisis de funcionalidad del producto
+* Appodeal: Mostrar publicidad dentro de las aplicaciones. Política de Privacidad de https://appodeal.com/privacy-policy/
 
 ### ¿Dónde puedo consultar el aviso de privacidad integral?
 Para conocer mayor información sobre los términos y condiciones en que serán tratados sus datos personales, como los terceros con quienes compartimos su información personal y la forma en que podrá ejercer sus derechos ARCO, puede consultar el aviso de privacidad integral en:
 
 [Aviso de Privacidad Integral](https://mkfnx.github.io/full-privacy-policy-es)
 
-Última actualización: 07/04/2019
+Última actualización: 18 de Julio de 2024

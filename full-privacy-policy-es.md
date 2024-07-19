@@ -22,6 +22,7 @@ La aceptación del aviso de privacidad es necesaria para el uso del producto. El
  
 Destinatario de los datos personales - Finalidad - Requiere del consentimiento
 * Google - Publicidad y análisis de funcionalidades del producto - No
+* Appodeal - Publicidad - No
 
 ### ¿Cómo puede acceder, rectificar o cancelar sus datos personales, u oponerse a su uso?
  Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección de su información personal en caso de que esté desactualizada, sea inexacta o incompleta (Rectificación); que la eliminemos de nuestros registros o bases de datos cuando considere que la misma no está siendo utilizada adecuadamente (Cancelación); así como oponerse al uso de sus datos personales para fines específicos (Oposición). Estos derechos se conocen como derechos ARCO.
@@ -95,7 +96,8 @@ Los datos personales que obtenemos de estas tecnologías de rastreo son los sigu
 Asimismo, le informamos que su información personal será compartida con las siguientes personas, empresas, organizaciones o autoridades distintas a nosotros, para los siguientes fines:
 
 Destinatario de los datos personales	-	Finalidad
-* Google:	Publicidad y análisis de funcionalidad del producto
+* Google:	Publicidad, estadísticas de uso y análisis de funcionalidad del producto
+* Appodeal: Mostrar publicidad dentro de las aplicaciones. Política de Privacidad de https://appodeal.com/privacy-policy/
 
 Estas tecnologías podrán deshabilitarse siguiendo los siguientes pasos: Modificar la configuración de su dispositivo para desactivar las tecnologías correspondientes..
 
@@ -106,4 +108,4 @@ Nos comprometemos a mantenerlo informado sobre los cambios que pueda sufrir el p
 
 El procedimiento a través del cual se llevarán a cabo las notificaciones sobre cambios o actualizaciones al presente aviso de privacidad es el siguiente: Avisos mostrados durante el uso del producto
  
-Última actualización: 07/04/2019
+Última actualización: 18 de Julio de 2024
