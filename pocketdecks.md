@@ -21,6 +21,6 @@ permalink: /pocketdecks/
 ![Captura de Pantalla App Pocket Decks mostrando la lista de mazos meta]({{ site.baseurl }}/images/pocketdecks-screenshot-1.png "Mazos Meta Pkmn TCG Pocket")
 ![Captura de Pantalla App Pocket Decks mostrando el índice de cartas]({{ site.baseurl }}/images/pocketdecks-screenshot-2.png "Índice de cartas Pkmn TCG Pocket")
 ![Captura de Pantalla App Pocket Decks mostrando la pantalla para crear mazos]({{ site.baseurl }}/images/pocketdecks-screenshot-3.png "Crea tus propios mazos de Pkmn TCG Pocket y compártelos")
-![Imagen del mazo de Darkrai y Magnezone creada con la app Pocket Decks]({{ site.baseurl }}/images/pocketdecks-ejemplo-compartir-mazo. "Imagen para compartir del mazo de Darkrai y Magnezone de Pkmn TCG Pocket")
+![Imagen del mazo de Darkrai y Magnezone creada con la app Pocket Decks]({{ site.baseurl }}/images/pocketdecks-ejemplo-compartir-mazo.jpg "Imagen para compartir del mazo de Darkrai y Magnezone de Pkmn TCG Pocket")
 
 Aviso de privacidad: [https://mkfnx.github.io/full-privacy-policy-es](https://mkfnx.github.io/full-privacy-policy-es)
