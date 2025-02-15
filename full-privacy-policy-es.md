@@ -22,6 +22,7 @@ La aceptación del aviso de privacidad es necesaria para el uso del producto. El
  
 Destinatario de los datos personales - Finalidad - Requiere del consentimiento
 * Google - Publicidad y análisis de funcionalidades del producto - No
+* Posthob - Análisis de funcionalidades del producto - No
 * Appodeal - Publicidad - No
 
 ### ¿Cómo puede acceder, rectificar o cancelar sus datos personales, u oponerse a su uso?
@@ -97,6 +98,7 @@ Asimismo, le informamos que su información personal será compartida con las si
 
 Destinatario de los datos personales	-	Finalidad
 * Google:	Publicidad, estadísticas de uso y análisis de funcionalidad del producto
+* PostHog: Estadísticas de uso y análisis de funcionalidad del producto. Acuerdo de Procesamiento de Datos: https://mkfnx.github.io/PostHogDPA.pdf
 * Appodeal: Mostrar publicidad dentro de las aplicaciones. Política de Privacidad de https://appodeal.com/privacy-policy/
 
 Estas tecnologías podrán deshabilitarse siguiendo los siguientes pasos: Modificar la configuración de su dispositivo para desactivar las tecnologías correspondientes..
