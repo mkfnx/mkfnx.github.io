@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Pocket Decks app
-permalink: /pocketdecks/
+permalink: /shorts/
 ---
 
 This posts showcases my most relevant and representative short videos.
