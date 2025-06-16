@@ -105,6 +105,6 @@ En este código CSS usamos las propiedades `background-color` y `border` para ha
 
 Con esto tenemos lo necesario para pasar a la siguiente fase de proyecto en la que usaremos nuestro código JavaScript de la fase 1 para mostrar una visualización para dar respuesta al usuario usando los elementos de discos y barras que desarrollamos en esta fase.
 
-Si tienes alguna puedes preguntarla en el [grupo de Facebook de freeCodeCamp CDMX](https://www.facebook.com/groups/free.code.camp.mexico.df/) o el [Slack de freeCodeCamp CDMX](https://join.slack.com/t/fcccdmx/shared_invite/enQtOTc5MDc3NDMxNzY2LWZiMDk2OGVmMDk2ZjkzY2JlMzQ0N2VhY2ZjYTk3NTUyYmE0MGFlNDQ1NGVkOGUzNjg3NDY0YWViN2FkMDkwOWE) o incluso contactarme a través de alguna red social de las que aparecen en el footer de este sitio.
+Si tienes alguna puedes preguntarla en el [grupo de Facebook de freeCodeCamp CDMX](https://www.facebook.com/groups/free.code.camp.mexico.df/) o contactarme a través de alguna red social de las que aparecen en el footer de este sitio.
 
 Aquí puedes ver la [siguiente fase](https://mkfnx.github.io/fCC-Barbell-3/) de este proyecto.
