@@ -9,7 +9,7 @@ This page features selected technical blog posts I’ve written, showcasing my a
 
 ## Facebook Messenger Bot using Facebook API data (Winner of a DevPost Challenge)
 
-(This post](https://mkfnx.github.io/Facebook-API-en-bot-de-Messenger/) presents a project that connects a Django-based backend with the Facebook Graph API to retrieve group content, process interaction data, and expose it in JSON format to be consumed by a Messenger chatbot.
+[This post](https://mkfnx.github.io/Facebook-API-en-bot-de-Messenger/) presents a project that connects a Django-based backend with the Facebook Graph API to retrieve group content, process interaction data, and expose it in JSON format to be consumed by a Messenger chatbot.
 
 The tutorial walks through API authentication, pagination handling, data filtering, and rendering the result either in HTML or structured Messenger templates. The backend integrates with Chatfuel to enable a user-friendly flow.
 
