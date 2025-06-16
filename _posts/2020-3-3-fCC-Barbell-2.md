@@ -107,4 +107,4 @@ Con esto tenemos lo necesario para pasar a la siguiente fase de proyecto en la q
 
 Si tienes alguna puedes preguntarla en el [grupo de Facebook de freeCodeCamp CDMX](https://www.facebook.com/groups/free.code.camp.mexico.df/) o el [Slack de freeCodeCamp CDMX](https://join.slack.com/t/fcccdmx/shared_invite/enQtOTc5MDc3NDMxNzY2LWZiMDk2OGVmMDk2ZjkzY2JlMzQ0N2VhY2ZjYTk3NTUyYmE0MGFlNDQ1NGVkOGUzNjg3NDY0YWViN2FkMDkwOWE) o incluso contactarme a través de alguna red social de las que aparecen en el footer de este sitio.
 
-*Siguiente fase disponible próximamente*
+Aquí puedes ver la [siguiente fase](https://mkfnx.github.io/fCC-Barbell-3/) de este proyecto.
