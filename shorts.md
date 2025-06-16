@@ -4,7 +4,8 @@ title: Highlighted Shorts
 permalink: /shorts/
 ---
 
-These posts showcases my most relevant and representative short videos.
+Curated selection of short videos created for TikTok and other platforms. All videos are produced end-to-end by me, scripting, filming, editing, and publishing, and focus on making technical topics engaging and approachable. Selected playlists below have individually reached hundreds of thousands of views.
+
 
 ## SQL interview questions
 
