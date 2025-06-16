@@ -174,4 +174,4 @@ function removePreviousPlateViews() {
 
 ## Conclusiones
 
-Puedes ver el código de la solución completa en Codpen <https://codepen.io/mkfnx/pen/XWbgpPZ?editors=0001/>
+Puedes ver el código de la solución completa en Codpen <https://codepen.io/mkfnx/pen/XWbgpPZ/>
