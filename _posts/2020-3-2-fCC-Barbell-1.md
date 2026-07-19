@@ -44,7 +44,7 @@ Aquí vemos que la suma del peso para lograr una carga de 200 lbs queda de la si
 * Peso barra: 45
 * Total: 200 (77.5 de lado izquierdo + 77.5 de lado derecho + 45 de baarra)
 
-## Nota: Debemos usar menor cantidad posible de discos
+## Usar menor cantidad posible de discos
 El mismo peso se puede ajustar de diferentes formas con los discos estándar, por ejemplo, 20 lbs pueden ser 2 discos de 10 lbs o 4 discos de 5 lbs y así con muchos otros pesos y discos, sin embargo, debido a que en los gimnasios compartimos el equipo con otras personas no queremos tardar mucho ajustando nuestra barra, así que para calcular este peso trataremos de mover el menor número posible de discos y esto tendrá como consecuencia que deberemos intentar colocar los discos más pesados primero.
 
 # Entorno de desarrollo y creación del proyecto
