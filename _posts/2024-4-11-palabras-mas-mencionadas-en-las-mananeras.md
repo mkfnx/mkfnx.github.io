@@ -3,7 +3,7 @@ layout: post
 title: Programé una web para ver las palabras más mencionadas en las mañaneras
 ---
 
-La web es [palabrera.info](https://palabrera.info), muestra nubes de palabras de las [conferencias diarias](https://palabrera.info/conferencias_diarias) y tiene una [búsqueda](https://palabrera.info/busqueda) muy simple para encontrar las conferencias en las que cierta palabra fue de las 10 más mencionadas.
+La web es [palabrera.mkfnx.dev/](https://palabrera.mkfnx.dev/), muestra nubes de palabras de las [conferencias diarias](https://palabrera.mkfnx.dev/conferencias_diarias) y tiene una [búsqueda](https://palabrera.mkfnx.dev/busqueda) muy simple para encontrar las conferencias en las que cierta palabra fue de las 10 más mencionadas.
 
 También generé gráficas de ciertos periodos acumulados, como la de aquí abajo que es de lo más mencionado en todas las mañaneras. Sorpresivamente (al menos para mi), no están temas como "opositores" o "mafia", aunque sí algunos como "pueblo", "salud", "bienestar" o "campaña"
 
@@ -11,7 +11,7 @@ También generé gráficas de ciertos periodos acumulados, como la de aquí abaj
 
 Vi que ha habido algunos proyectos parecidos, incluida [una publicación en Reddit](https://www.reddit.com/r/mexico/comments/ft3rz0/nube_de_palabras_de_amlo_de_la_ma%C3%B1anera_de_hoy/), pero no encontré alguno que cubriera todas las conferencias o que permitiera buscar. Esto puede ser útil para alguien que busque referencias de la mañanera o quiera saber cuándo se habló de algún tema. También es un proyecto que hice como práctica de ingeniería y análisis de datos porqué últimamente he estado aprendiendo y [creando contenido](https://tiktok.com/@mkfnx) sobre esos temas.
 
-En el procesamiento del texto se omiten palabras comunes pero poco relevantes ([stopwords](https://es.wikipedia.org/wiki/Palabra_vac%C3%ADa#:~:text=Palabras%20vac%C3%ADas%20es%20el%20nombre,en%20lenguaje%20natural%20%28texto%29.)). Usé una lista ya establecida de [stopwords de la biblioteca nltk](https://www.nltk.org/search.html?q=stopwords), pero esto depende mucho del contexto y después de generar algunas gráficas decidí agregar más stopwords, esas se pueden ver en la sección de [Sobre este sitio](https://palabrera.info/sobre_este_sitio).
+En el procesamiento del texto se omiten palabras comunes pero poco relevantes ([stopwords](https://es.wikipedia.org/wiki/Palabra_vac%C3%ADa#:~:text=Palabras%20vac%C3%ADas%20es%20el%20nombre,en%20lenguaje%20natural%20%28texto%29.)). Usé una lista ya establecida de [stopwords de la biblioteca nltk](https://www.nltk.org/search.html?q=stopwords), pero esto depende mucho del contexto y después de generar algunas gráficas decidí agregar más stopwords, esas se pueden ver en la sección de [Sobre este sitio](https://palabrera.mkfnx.dev/sobre_este_sitio).
 
 Voy a liberar el código en GitHub en cuánto haga algunos ajustes, ya que fue algo muy express y aún requiere modificaciones y pasos manuales para generar gráficas nuevas. Algo valioso de liberar el código, sería que alguien con más contexto sobre alguna conferencia pudiera generar las gráficas con una lista de stopwords más adecuada.
 
