@@ -113,7 +113,7 @@ Cada aplicación usa únicamente los servicios que necesita. Detalle de las apps
 
 * **No requiere cuenta, registro ni datos personales.** El progreso de los ejercicios se guarda únicamente en el dispositivo y se elimina al desinstalar la app.
 * **Firebase Analytics (Google):** eventos de uso de la app (por ejemplo: ejercicio abierto, consulta ejecutada, ejercicio completado) junto con un identificador de instalación, para detectar ejercicios confusos y mejorar el contenido.
-* **Google AdMob:** identificador de publicidad, interacciones con los anuncios y datos técnicos del dispositivo, para mostrar la publicidad que cubre los costos de desarrollo.
+* **Google AdMob:** identificador de publicidad, interacciones con los anuncios, ubicación aproximada derivada de la dirección IP y datos técnicos del dispositivo, para mostrar la publicidad que cubre los costos de desarrollo.
 * **Firebase Crashlytics (Google):** informes de errores y fallos de la app (traza del error, modelo de dispositivo, versión de Android y versión de la app), para detectar y corregir fallos que no se reproducen en desarrollo. No incluye el contenido de tus consultas ni tu progreso.
 * **Notificaciones locales** de tips diarios: opcionales y desactivables desde la propia app.
 * La app **funciona sin conexión**: sin red no se muestran anuncios y los eventos de uso se envían cuando vuelve la conexión.
