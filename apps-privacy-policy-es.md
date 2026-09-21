@@ -22,15 +22,17 @@ Los datos personales que obtenemos de estas tecnologías de rastreo son los sigu
 * Región en la que se encuentra el usuario 
 * Tipo de navegador del usuario
 * Tipo de sistema operativo del usuario 
+* Identificador de publicidad del dispositivo (Android Advertising ID)
+* Identificador de instalación de la aplicación
 
 ### ¿Con quién compartimos su información personal y para qué fines?
 Nuestros productos hacen uso de los siguientes servicios de terceros, los cuales recaban y procesan información de acuerdo a lo específicado en sus propias políticas de privacidad:
-* Google:	Publicidad, estadísticas de uso y análisis de funcionalidad del producto
-* Appodeal: Mostrar publicidad dentro de las aplicaciones. Política de Privacidad de https://appodeal.com/privacy-policy/
+* **SQL Gym** (`com.mkfnx.sqlpractice`): Google — Firebase Analytics (estadísticas de uso) y Google AdMob (publicidad e identificador de publicidad). No requiere cuenta ni registro.
+* **Otras apps**: Google y, según la app, Appodeal (publicidad: https://appodeal.com/privacy-policy/) y PostHog (estadísticas de uso: https://mkfnx.github.io/PostHogDPA.pdf).
 
 ### ¿Dónde puedo consultar el aviso de privacidad integral?
 Para conocer mayor información sobre los términos y condiciones en que serán tratados sus datos personales, como los terceros con quienes compartimos su información personal y la forma en que podrá ejercer sus derechos ARCO, puede consultar el aviso de privacidad integral en:
 
 [Aviso de Privacidad Integral](https://mkfnx.github.io/full-privacy-policy-es)
 
-Última actualización: 18 de Julio de 2024
+Última actualización: 20 de Septiembre de 2026

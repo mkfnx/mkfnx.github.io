@@ -93,6 +93,8 @@ Los datos personales que obtenemos de estas tecnologías de rastreo son los sigu
 * Región en la que se encuentra el usuario 
 * Tipo de navegador del usuario
 * Tipo de sistema operativo del usuario 
+* Identificador de publicidad del dispositivo (Android Advertising ID)
+* Identificador de instalación de la aplicación
 
 Asimismo, le informamos que su información personal será compartida con las siguientes personas, empresas, organizaciones o autoridades distintas a nosotros, para los siguientes fines:
 
@@ -103,6 +105,23 @@ Destinatario de los datos personales	-	Finalidad
 
 Estas tecnologías podrán deshabilitarse siguiendo los siguientes pasos: Modificar la configuración de su dispositivo para desactivar las tecnologías correspondientes..
 
+### Datos por aplicación
+
+Cada aplicación usa únicamente los servicios que necesita. Detalle de las apps publicadas:
+
+#### SQL Gym (`com.mkfnx.sqlpractice`)
+
+* **No requiere cuenta, registro ni datos personales.** El progreso de los ejercicios se guarda únicamente en el dispositivo y se elimina al desinstalar la app.
+* **Firebase Analytics (Google):** eventos de uso de la app (por ejemplo: ejercicio abierto, consulta ejecutada, ejercicio completado) junto con un identificador de instalación, para detectar ejercicios confusos y mejorar el contenido.
+* **Google AdMob:** identificador de publicidad, interacciones con los anuncios y datos técnicos del dispositivo, para mostrar la publicidad que cubre los costos de desarrollo.
+* **Notificaciones locales** de tips diarios: opcionales y desactivables desde la propia app.
+* La app **funciona sin conexión**: sin red no se muestran anuncios y los eventos de uso se envían cuando vuelve la conexión.
+* Para limitar la publicidad personalizada: Ajustes de Android → Privacidad → Anuncios.
+
+#### Otras aplicaciones
+
+Cuando una app use otros servicios (por ejemplo PostHog o Appodeal), se documentará en esta misma sección indicando la app concreta y los datos que recaba.
+
 ### ¿Cómo puede conocer los cambios en este aviso de privacidad? 
 El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas de nuevos requerimientos legales; de nuestras propias necesidades por los productos o servicios que ofrecemos; de nuestras prácticas de privacidad; de cambios en nuestro modelo de negocio, o por otras causas.
 
@@ -110,4 +129,4 @@ Nos comprometemos a mantenerlo informado sobre los cambios que pueda sufrir el p
 
 El procedimiento a través del cual se llevarán a cabo las notificaciones sobre cambios o actualizaciones al presente aviso de privacidad es el siguiente: Avisos mostrados durante el uso del producto
  
-Última actualización: 18 de Julio de 2024
+Última actualización: 20 de Septiembre de 2026
