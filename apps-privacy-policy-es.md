@@ -27,7 +27,7 @@ Los datos personales que obtenemos de estas tecnologías de rastreo son los sigu
 
 ### ¿Con quién compartimos su información personal y para qué fines?
 Nuestros productos hacen uso de los siguientes servicios de terceros, los cuales recaban y procesan información de acuerdo a lo específicado en sus propias políticas de privacidad:
-* **SQL Gym** (`com.mkfnx.sqlpractice`): Google — Firebase Analytics (estadísticas de uso) y Google AdMob (publicidad e identificador de publicidad). No requiere cuenta ni registro.
+* **SQL Gym** (`com.mkfnx.sqlpractice`): Google — Firebase Analytics (estadísticas de uso), Google AdMob (publicidad e identificador de publicidad) y Firebase Crashlytics (informes de errores). No requiere cuenta ni registro.
 * **Otras apps**: Google y, según la app, Appodeal (publicidad: https://appodeal.com/privacy-policy/) y PostHog (estadísticas de uso: https://mkfnx.github.io/PostHogDPA.pdf).
 
 ### ¿Dónde puedo consultar el aviso de privacidad integral?
