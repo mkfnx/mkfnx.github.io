@@ -1,0 +1,24 @@
+---
+import { getCollection, render } from 'astro:content';
+import PostLayout from '../layouts/PostLayout.astro';
+
+// One route per post. `slug` comes from front matter (not the file name) so the
+// two legacy mixed-case URLs survive the migration.
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<PostLayout
+  title={post.data.title}
+  pubDate={post.data.pubDate}
+  description={post.data.description}
+>
+  <Content />
+</PostLayout>

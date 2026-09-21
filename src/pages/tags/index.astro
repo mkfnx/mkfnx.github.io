@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { tagOrder } from '../../config';
+
+const posts = await getCollection('blog');
+const counts = new Map<string, number>();
+for (const post of posts) {
+  for (const tag of post.data.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1);
+}
+// Display order from config, then any tag not listed there.
+const ordered = [
+  ...tagOrder.filter((t) => counts.has(t)),
+  ...[...counts.keys()].filter((t) => !tagOrder.includes(t)).sort(),
+];
+---
+<BaseLayout title="Tags">
+  <article class="page">
+    <h1>Tags</h1>
+    <div class="entry">
+      <ul>
+        {ordered.map((tag) => (
+          <li><a href={`/tags/${tag}/`}>{tag}</a> ({counts.get(tag)})</li>
+        ))}
+      </ul>
+    </div>
+  </article>
+</BaseLayout>

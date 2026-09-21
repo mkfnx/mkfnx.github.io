@@ -1,0 +1,16 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Comments from '../components/Comments.astro';
+const { title, pubDate, description } = Astro.props;
+const written = pubDate?.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+<BaseLayout title={title} description={description}>
+  <article class="post">
+    <h1>{title}</h1>
+    <div class="entry">
+      <slot />
+    </div>
+    {written && <div class="date">Written on {written}</div>}
+    <Comments />
+  </article>
+</BaseLayout>

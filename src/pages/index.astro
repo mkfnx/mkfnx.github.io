@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+// Jekyll's index.html used `post.excerpt` (first paragraph); this keeps the
+// same feel without pulling the markdown renderer in just for a teaser.
+const excerpt = (body = '') =>
+  body
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/[#*_>`]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 240);
+---
+<BaseLayout>
+  <div class="posts">
+    {posts.map((post) => (
+      <article class="post">
+        <h1><a href={`/${post.data.slug}/`}>{post.data.title}</a></h1>
+        <div class="entry">
+          <p>{excerpt(post.body)}…</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</BaseLayout>

@@ -1,0 +1,73 @@
+---
+import { site, footerLinks } from '../config';
+import Analytics from '../components/Analytics.astro';
+import ConsentBanner from '../components/ConsentBanner.astro';
+import '../styles/global.scss';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+const documentTitle = title
+  ? `${title} – ${site.name} – ${site.description}`
+  : `${site.name} – ${site.description}`;
+const metaDescription = description ?? site.description;
+---
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>{documentTitle}</title>
+    <meta charset="utf-8" />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="description" content={metaDescription} />
+    <meta property="og:description" content={metaDescription} />
+    <meta name="author" content={site.name} />
+    {title ? <meta property="og:title" content={title} /> : null}
+    {title ? <meta property="twitter:title" content={title} /> : null}
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={`${site.name} - ${site.description}`}
+      href="/feed.xml"
+    />
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src={site.avatar} alt={site.name} /></a>
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">{site.name}</a></h1>
+            <p class="site-description">{site.description}</p>
+          </div>
+          <nav>
+            <a href="/">Blog</a>
+            <a href="/about">About</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <slot />
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          {footerLinks.github && <a href={`https://github.com/${footerLinks.github}`}><i class="svg-icon github"></i></a>}
+          {footerLinks.linkedin && <a href={`https://www.linkedin.com/in/${footerLinks.linkedin}`}><i class="svg-icon linkedin"></i></a>}
+          {footerLinks.stackoverflow && <a href={`http://stackoverflow.com/${footerLinks.stackoverflow}`}><i class="svg-icon stackoverflow"></i></a>}
+          {footerLinks.youtube && <a href={`https://youtube.com/${footerLinks.youtube}`}><i class="svg-icon youtube"></i></a>}
+        </footer>
+      </div>
+    </div>
+
+    <ConsentBanner />
+    <Analytics />
+  </body>
+</html>

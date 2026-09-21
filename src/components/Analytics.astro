@@ -1,0 +1,24 @@
+---
+import { site } from '../config';
+
+// GA4, consent-gated: everything is denied until the banner is accepted, and a
+// previous decision is honoured before the first page_view is sent.
+const snippet = `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  analytics_storage: 'denied',
+  wait_for_update: 500
+});
+try {
+  if (localStorage.getItem('consent:analytics') === 'granted') {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+  }
+} catch (e) { /* private mode: stay denied */ }
+gtag('js', new Date());
+gtag('config', '${site.ga4}', { anonymize_ip: true });`;
+---
+<script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${site.ga4}`}></script>
+<script is:inline set:html={snippet}></script>
