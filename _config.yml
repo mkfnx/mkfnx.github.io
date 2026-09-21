@@ -37,7 +37,9 @@ footer-links:
 disqus:
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
-google_analytics: UA-68369311-3
+# Google Analytics 4 measurement ID (the site uses consent mode: nothing is
+# measured until the visitor accepts — see _includes/consent-banner.html).
+google_analytics_ga4: G-46HE0ZRQ3N
 
 # Your website URL (e.g. http://barryclark.github.io or http://www.barryclark.co)
 # Used for Sitemap.xml and your RSS feed

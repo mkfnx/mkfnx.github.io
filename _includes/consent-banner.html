@@ -1,0 +1,70 @@
+{% if site.google_analytics_ga4 %}
+<!-- Cookie/analytics consent banner (GDPR + ePrivacy for EEA, UK, CH).
+     Analytics are denied by default in analytics.html; this banner is the only
+     way to grant them, and the choice is remembered in localStorage.
+     Text in Spanish because the site's audience is mainly Spanish-speaking. -->
+<div id="consent-banner" hidden>
+  <p>
+    Uso Google Analytics para saber qué artículos se leen. No se activa hasta
+    que lo aceptes, y no se comparte con terceros para publicidad.
+    <a href="{{ site.baseurl }}/full-privacy-policy-es/">Más información</a>.
+  </p>
+  <div class="consent-actions">
+    <button type="button" id="consent-accept">Aceptar</button>
+    <button type="button" id="consent-reject">Rechazar</button>
+  </div>
+</div>
+
+<style>
+  #consent-banner {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #1a1a1a;
+    color: #f0f0f0;
+    font-size: 14px;
+    line-height: 1.4;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.3);
+  }
+  #consent-banner p { margin: 0; flex: 1 1 320px; }
+  #consent-banner a { color: #9ecbff; }
+  .consent-actions { display: flex; gap: 8px; }
+  #consent-banner button {
+    cursor: pointer;
+    border: 0;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  #consent-accept { background: #4a90d9; color: #fff; }
+  #consent-reject { background: #3a3a3a; color: #f0f0f0; }
+</style>
+
+<script>
+  (function () {
+    var KEY = 'consent:analytics';
+    var banner = document.getElementById('consent-banner');
+    var stored = null;
+    try { stored = localStorage.getItem(KEY); } catch (e) {}
+    if (stored) return;               // decision already made
+    banner.hidden = false;
+
+    function decide(granted) {
+      try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
+      if (granted && typeof gtag === 'function') {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
+      banner.hidden = true;
+    }
+
+    document.getElementById('consent-accept').addEventListener('click', function () { decide(true); });
+    document.getElementById('consent-reject').addEventListener('click', function () { decide(false); });
+  })();
+</script>
+{% endif %}
