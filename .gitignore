@@ -8,3 +8,10 @@ _site
 node_modules
 package.json
 venv
+
+# Legacy Pelican scaffolding / build output — the site is Jekyll now (_posts/_config.yml)
+output/
+__pycache__/
+pelican-plugins/
+themes/
+mkfnx.github.io/

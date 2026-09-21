@@ -1,4 +1,4 @@
-I"+*<p>En esta fase vamos a crear elementos HTML y CSS que servirán para crear una visualización para el resultado del problema que solucionamos en la fase anterior.</p>
+I"�*<p>En esta fase vamos a crear elementos HTML y CSS que servirán para crear una visualización para el resultado del problema que solucionamos en la fase anterior.</p>
 
 <p>Puedes ver la segunda fase de este proyecto en este link de CodePen <a href="https://codepen.io/mkfnx/pen/XWbgpPZ/">https://codepen.io/mkfnx/pen/XWbgpPZ/</a></p>
 
@@ -35,7 +35,7 @@
 <p>En los elementos del form definimos dos propiedades muy importantes:</p>
 <ul>
   <li>En el input de texto indicamos un id, ya que es así como podremos referirnos a él desde el código JavaScript y así poder obtener el valor que el usuario ingresó</li>
-  <li>Para el botón necesitamos la propiedad onClick, la cual tendrá como valor el nombre de una función que más tarde agregaremos a nuestro código JavaScript, y la cual en este caso nombré onCalculateButtonClicked. Estas funciones en general reciben un nombre que sigue una convención que ayuda a expresar que reaccionan a un evento, por ello comienza con <code class="highlighter-rouge">on</code> (al ocurrir) y termina con <code class="highlighter-rouge">Clicked</code> (el nombre del evento, en este caso un click) y entre ellos el nombre del elemento que genera el evento (<code class="highlighter-rouge">CalculateButton</code>).</li>
+  <li>Para el botón necesitamos la propiedad onClick, la cual tendrá como valor el nombre de una función que más tarde agregaremos a nuestro código JavaScript, y la cual en este caso nombré onCalculateButtonClicked. Estas funciones en general reciben un nombre que sigue una convención que ayuda a expresar que reaccionan a un evento, por ello comienza con <code class="language-plaintext highlighter-rouge">on</code> (al ocurrir) y termina con <code class="language-plaintext highlighter-rouge">Clicked</code> (el nombre del evento, en este caso un click) y entre ellos el nombre del elemento que genera el evento (<code class="language-plaintext highlighter-rouge">CalculateButton</code>).</li>
 </ul>
 
 <h1 id="sección-de-visualización">Sección de Visualización</h1>
@@ -96,7 +96,7 @@
 
 <p><img src="/images/barbell-calculator-static-visualization.png" alt="Ejemplo de visualización de la barra olímpica" /></p>
 
-<p>En este código CSS usamos las propiedades <code class="highlighter-rouge">background-color</code> y <code class="highlighter-rouge">border</code> para hacer visible el área rectangular que ocupan todos los divs y que simularán nuestros discos y barras, asignamos un tamaño con mayor longitud para representar una barra y un tamaño con mayor altura para representar un disco. Además las propiedades <code class="highlighter-rouge">display</code> y <code class="highlighter-rouge">vertical-align</code> se usan para alinear los divs a manera que den apariencia de que los elementos que representan los discos están colocados sobre el elemento que representa la barra. También definimos una clase CSS para cada disco en particular la cual nos permitirá asignarles diferentes alturas a cada uno, dependiendo de su peso.</p>
+<p>En este código CSS usamos las propiedades <code class="language-plaintext highlighter-rouge">background-color</code> y <code class="language-plaintext highlighter-rouge">border</code> para hacer visible el área rectangular que ocupan todos los divs y que simularán nuestros discos y barras, asignamos un tamaño con mayor longitud para representar una barra y un tamaño con mayor altura para representar un disco. Además las propiedades <code class="language-plaintext highlighter-rouge">display</code> y <code class="language-plaintext highlighter-rouge">vertical-align</code> se usan para alinear los divs a manera que den apariencia de que los elementos que representan los discos están colocados sobre el elemento que representa la barra. También definimos una clase CSS para cada disco en particular la cual nos permitirá asignarles diferentes alturas a cada uno, dependiendo de su peso.</p>
 
 <h1 id="conclusión">Conclusión</h1>
 
